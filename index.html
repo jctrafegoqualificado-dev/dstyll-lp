@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D'Styll Interiores — Cozinhas Planejadas de Alto Padrão em Curitiba</title>
+  <meta name="description" content="30 anos transformando cozinhas em Curitiba. Projeto 3D gratuito, fábrica própria, 100+ avaliações 5 estrelas. Fale com um designer agora.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #1a1a1a;
+      --dark2: #111111;
+      --charcoal: #2D2D2D;
+      --gold: #C4A35A;
+      --gold-light: #E8C97A;
+      --cream: #F8F4EE;
+      --white: #ffffff;
+      --green-wp: #25D366;
+      --green-wp-dark: #1DA851;
+      --red-accent: #f04144;
+      --gray: #888888;
+      --light-gray: #f5f5f5;
+      --border: #e8e0d4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--charcoal);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      padding: 14px 40px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--dark); }
+    .nav-cta {
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-wp-dark); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0f0f0f 0%, #1a1a1a 40%, #2a2218 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.12;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(196,163,90,0.15);
+      border: 1px solid rgba(196,163,90,0.4);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+      animation: fadeDown 0.8s ease forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 28px;
+      animation: fadeDown 0.8s 0.15s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 44px;
+      animation: fadeDown 0.8s 0.3s ease both;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 0.8s 0.45s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 18px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--green-wp-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 18px 32px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+      animation: fadeDown 0.8s 0.6s ease both;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── DOR ─── */
+    .section-dor {
+      background: var(--cream);
+      padding: 100px 24px;
+    }
+    .container { max-width: 880px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red-accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-body {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 24px;
+    }
+    .section-body strong { color: var(--dark); font-weight: 700; }
+    .callout-box {
+      background: var(--white);
+      border-left: 4px solid var(--red-accent);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 40px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .callout-box p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--charcoal);
+      font-style: italic;
+    }
+    .callout-box strong { color: var(--dark); font-style: normal; }
+
+    /* ─── TRANSFORMAÇÃO ─── */
+    .section-transform {
+      background: var(--dark);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-transform::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(196,163,90,0.08) 0%, transparent 70%);
+    }
+    .section-transform .section-eyebrow { color: var(--gold); }
+    .section-transform .section-title { color: var(--white); }
+    .section-transform .section-body { color: rgba(255,255,255,0.75); }
+    .transform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .transform-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,163,90,0.15);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .transform-card.visible {
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .transform-card:hover {
+      background: rgba(196,163,90,0.06);
+      border-color: rgba(196,163,90,0.35);
+      transform: translateY(-4px);
+    }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .card-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ─── PROVA SOCIAL ─── */
+    .section-proof {
+      background: var(--white);
+      padding: 100px 24px;
+    }
+    .proof-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .stars-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF8E7;
+      border: 1px solid #F4D878;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #8B6914;
+      margin-bottom: 24px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .testimonial-card.visible {
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    .author-detail {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+    .stars { color: #F4C430; font-size: 14px; margin-top: 4px; }
+
+    /* ─── DIFERENCIAIS ─── */
+    .section-diff {
+      background: var(--light-gray);
+      padding: 100px 24px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .diff-item {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .diff-item.visible {
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .diff-item:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    .diff-check {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .diff-text-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .diff-text-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    /* ─── HISTÓRIA ─── */
+    .section-historia {
+      background: var(--white);
+      padding: 100px 24px;
+    }
+    .historia-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .historia-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .historia-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: -20px;
+    }
+    .historia-num span { color: var(--gold); }
+
+    /* ─── OFERTA/CTA ─── */
+    .section-oferta {
+      background: linear-gradient(160deg, #0f0f0f, #1a1a1a 60%, #221e14);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-oferta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(196,163,90,0.07) 0%, transparent 65%);
+    }
+    .section-oferta .section-eyebrow { color: var(--gold); }
+    .section-oferta .section-title { color: var(--white); }
+    .steps-list {
+      list-style: none;
+      max-width: 560px;
+      margin: 48px auto;
+      text-align: left;
+    }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    .steps-list li.visible {
+      animation: fadeRight 0.5s ease forwards;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); }
+    .step-text strong { color: var(--white); }
+    .urgencia-box {
+      background: rgba(196,163,90,0.08);
+      border: 1px solid rgba(196,163,90,0.25);
+      border-radius: 16px;
+      padding: 28px 36px;
+      max-width: 560px;
+      margin: 0 auto 48px;
+    }
+    .urgencia-box p {
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .urgencia-box strong { color: var(--gold-light); }
+    .cta-final-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-cta-final {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 22px 48px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: all 0.3s;
+      box-shadow: 0 12px 40px rgba(37,211,102,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-cta-final::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+    .btn-cta-final:hover {
+      background: var(--green-wp-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(37,211,102,0.5);
+    }
+    .cta-disclaimer {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+    .showroom-info {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .showroom-item {
+      text-align: center;
+    }
+    .showroom-item-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .showroom-item-value {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0a0a0a;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1px;
+    }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 999;
+      width: 60px; height: 60px;
+      background: var(--green-wp);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      text-decoration: none;
+      animation: pulse-wp 2.5s infinite;
+      transition: transform 0.3s;
+    }
+    .wp-float:hover { transform: scale(1.1); }
+    .wp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes shine {
+      0% { left: -60%; }
+      100% { left: 140%; }
+    }
+    @keyframes pulse-wp {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.1); }
+    }
+
+    /* ─── COUNTERS ─── */
+    .counter { display: inline-block; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      nav.scrolled { padding: 12px 20px; }
+      .hero-stats { gap: 28px; }
+      .hero-stat-num { font-size: 28px; }
+      .btn-primary, .btn-secondary { padding: 15px 24px; font-size: 14px; }
+      .btn-cta-final { padding: 18px 32px; font-size: 16px; }
+      .callout-box { padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">D'Styll</div>
+    <a href="https://wa.me/5541984951207?text=Olá! Vi a LP e quero falar com um designer sobre minha cozinha planejada." class="nav-cta" target="_blank">
+      Falar com Designer
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Curitiba · Desde 1994 · Família Oliveira</div>
+      <h1>
+        Você vai investir R$30 a R$80 mil<br>
+        numa cozinha planejada.<br>
+        <em>A decisão que você toma hoje<br>define se vai se orgulhar — ou se arrepender.</em>
+      </h1>
+      <p class="hero-sub">
+        Há 30 anos, a D'Styll entrega cozinhas que ficam <strong style="color:white">exatamente como no projeto</strong>. Sem surpresas. Sem atrasos. Sem decepcionar.
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre minha cozinha planejada." class="btn-primary" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar com um Designer
+        </a>
+        <a href="#oferta" class="btn-secondary">Ver como funciona →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span class="counter" data-target="30">0</span>+</div>
+          <div class="hero-stat-label">Anos de Tradição</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span class="counter" data-target="100">0</span>+</div>
+          <div class="hero-stat-label">Avaliações 5 ★</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span class="counter" data-target="0">0</span></div>
+          <div class="hero-stat-label">Reclamações no Reclame Aqui</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOR -->
+  <section class="section-dor">
+    <div class="container">
+      <p class="section-eyebrow">A realidade que ninguém conta</p>
+      <h2 class="section-title">
+        Você já ouviu essas <em>histórias</em>, não é?
+      </h2>
+      <p class="section-body">
+        Uma amiga contratou uma marcenaria. O projeto no 3D era lindo. Quando os móveis chegaram... as portas não fechavam direito. A bancada veio com a cor errada. O prazo atrasou três meses. E pior: <strong>ninguém atendia o telefone depois da entrega.</strong>
+      </p>
+      <p class="section-body">
+        Outra gastou tudo que tinha na reforma, e hoje sente aquela pontada toda vez que abre o armário e vê o acabamento descascando.
+      </p>
+      <div class="callout-box">
+        <p>Isso não é azar. <strong>É o padrão de quem contrata errado.</strong><br><br>
+        A sua cozinha vai ser o coração da sua casa por 20, 30 anos. Ela merece ser feita por quem vai estar aqui amanhã, depois de amanhã, daqui a dez anos — por uma família que construiu sua reputação tijolo por tijolo durante três décadas.</p>
+      </div>
+      <p class="section-body">
+        A D'Styll não é uma franquia. Não é um site que terceiriza a produção. É uma família curitibana, com fábrica própria, designer dedicado ao seu projeto, e o nome em cada móvel que sai pela porta.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMAÇÃO -->
+  <section class="section-transform">
+    <div class="container">
+      <p class="section-eyebrow">A sua nova realidade</p>
+      <h2 class="section-title">
+        Imagine acordar amanhã<br>e sentir <em>esse orgulho</em>.
+      </h2>
+      <p class="section-body">
+        Cada detalhe no lugar. As ferragens que deslizam com suavidade. A iluminação que valoriza cada superfície. O espaço que parece maior, mais organizado, mais <em style="color:var(--gold-light)">seu</em>. O projeto 3D que virou realidade — centímetro por centímetro.
+      </p>
+    </div>
+    <div class="container-wide">
+      <div class="transform-grid">
+        <div class="transform-card">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Fábrica Própria no Umbará</div>
+          <div class="card-text">Controlamos cada etapa da produção. Nenhum terceiro. Nenhuma desculpa. Quando dizemos prazo, cumprimos.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">Design de Autor</div>
+          <div class="card-text">Seu projeto é único. Não é catálogo, não é cópia. Cada ambiente é desenhado por um designer dedicado só à sua casa.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">✦</div>
+          <div class="card-title">O 3D É Contrato</div>
+          <div class="card-text">O que você aprova no projeto 3D é exatamente o que será entregue. Sem surpresas, sem "ficou parecido".</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">🏆</div>
+          <div class="card-title">Ferragens de Alto Padrão</div>
+          <div class="card-text">Dobradiças, puxadores e sistemas de deslizamento de marcas premium. Sua cozinha abre e fecha com perfeição por décadas.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">📍</div>
+          <div class="card-title">Showroom no Batel</div>
+          <div class="card-text">Venha tocar, abrir, fechar. Veja e sinta a qualidade dos materiais antes de assinar qualquer coisa.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Atendimento Direto</div>
+          <div class="card-text">Você fala com o designer responsável pelo seu projeto. Não com call center. Não com atendente de triagem.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="section-proof">
+    <div class="container-wide">
+      <div class="proof-header">
+        <p class="section-eyebrow">Reconhecida por quem exige o melhor</p>
+        <h2 class="section-title">O que os nossos clientes <em>dizem depois</em> da entrega</h2>
+        <div class="stars-badge">
+          ⭐ A melhor marcenaria de Curitiba no Google · 100+ avaliações 5 estrelas
+        </div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">O projeto ficou exatamente como no 3D. Cada detalhe que pedi foi executado com perfeição. Quando entrei na cozinha pronta, quase chorei de emoção. Valeu cada centavo investido.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">C</div>
+            <div>
+              <div class="author-name">Carla Drummond</div>
+              <div class="author-detail">Cliente D'Styll · Água Verde</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Já tinha sido enganada duas vezes por marcenarias que não cumpriram o prazo. Com a D'Styll foi completamente diferente: entregaram antes do prazo combinado e ainda fizeram um ajuste pós-entrega sem cobrar nada.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <div class="author-name">Renata Fontes</div>
+              <div class="author-detail">Cliente D'Styll · Batel</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">A melhor decisão da reforma foi escolher a D'Styll. Minha cozinha virou o assunto de toda visita que recebo. Cada pessoa que entra pergunta quem fez. Fico orgulhosa de indicar.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Márcia Lins</div>
+              <div class="author-detail">Cliente D'Styll · Seminário</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="section-diff">
+    <div class="container-wide">
+      <p class="section-eyebrow">Por que a D'Styll</p>
+      <h2 class="section-title">Por que quem reformou uma vez<br><em>não contrata mais ninguém</em></h2>
+      <div class="diff-grid">
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">30 anos de tradição familiar</div>
+            <div class="diff-text-desc">Fundada em 1994 por José Oliveira, hoje com seu filho Guilherme. Uma história construída sobre reputação.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">100+ avaliações 5 estrelas no Google</div>
+            <div class="diff-text-desc">Leia cada uma. São clientes reais, projetos reais, entregas reais.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">Zero reclamações no Reclame Aqui</div>
+            <div class="diff-text-desc">Em 30 anos de história. Isso não é sorte — é cultura de excelência.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">Fábrica própria no Umbará</div>
+            <div class="diff-text-desc">Controlamos a produção do início ao fim. Sem terceirizados, sem intermediários, sem surpresas.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">Showroom no Batel</div>
+            <div class="diff-text-desc">Av. Silva Jardim, 2251. Venha sentir a qualidade com as próprias mãos antes de decidir.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">Projeto 3D gratuito e sem compromisso</div>
+            <div class="diff-text-desc">Você vê o projeto antes de assinar qualquer coisa. Só avançamos quando você estiver 100% satisfeita.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA/CTA -->
+  <section class="section-oferta" id="oferta">
+    <div class="container" style="position:relative;z-index:2;">
+      <p class="section-eyebrow">Como funciona</p>
+      <h2 class="section-title">Simples, sem pressão,<br>sem compromisso inicial.</h2>
+      <ul class="steps-list">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Você nos manda uma mensagem</strong> — sem script, sem robô. Um designer responde.</div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Você conta o espaço e o que imagina</strong> — o tamanho, o estilo, as suas referências.</div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Agendamos uma visita ao showroom</strong> no Batel — ou uma visita técnica ao seu imóvel.</div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Você recebe um projeto 3D detalhado</strong>, sem compromisso. Cobramos só quando você disser: <em>"É exatamente isso."</em></div>
+        </li>
+      </ul>
+      <div class="urgencia-box">
+        <p>Nossa agenda de projetos para <strong>maio e junho de 2026</strong> está quase fechada.<br>Se a sua reforma tem prazo, o momento de conversar é <strong>agora</strong>.</p>
+      </div>
+      <div class="cta-final-group">
+        <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre minha cozinha planejada." class="btn-cta-final" target="_blank">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero Minha Cozinha D'Styll
+        </a>
+        <p class="cta-disclaimer">Sem compromisso · Projeto 3D gratuito · Resposta em minutos</p>
+      </div>
+      <div class="showroom-info">
+        <div class="showroom-item">
+          <div class="showroom-item-label">Showroom</div>
+          <div class="showroom-item-value">Av. Silva Jardim, 2251<br>Batel · Curitiba - PR</div>
+        </div>
+        <div class="showroom-item">
+          <div class="showroom-item-label">Horário</div>
+          <div class="showroom-item-value">Seg a Sex: 08h30 às 18h30<br>Sáb: 09h às 13h</div>
+        </div>
+        <div class="showroom-item">
+          <div class="showroom-item-label">WhatsApp</div>
+          <div class="showroom-item-value">(41) 98495-1207</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">D'Styll</div>
+    <p class="footer-tagline">Móveis sob medida para Curitiba e região desde 1994 · Tecnologia e tradição em cada milímetro</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:20px;">© 2026 D'Styll Móveis · Tradicional Família Curitibana</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre minha cozinha planejada." class="wp-float" target="_blank" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Intersection Observer para animações
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.transform-card, .testimonial-card, .diff-item, .steps-list li').forEach(el => observer.observe(el));
+
+    // Contadores animados
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const duration = 1800;
+      const start = performance.now();
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+  </script>
+</body>
+</html>
