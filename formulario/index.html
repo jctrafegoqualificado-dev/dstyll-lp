@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D'Styll — Solicite seu Projeto 3D Gratuito</title>
-  <meta name="description" content="Preencha o formulário e receba seu projeto 3D gratuito. D'Styll Interiores — 30 anos em Curitiba.">
+  <title>D'Styll — Solicite seu Projeto Exclusivo</title>
+  <meta name="description" content="Preencha o formulário e receba seu projeto exclusivo. D'Styll Interiores — 30 anos em Curitiba.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -335,7 +335,7 @@
         <em>você merece.</em>
       </h1>
       <p class="side-desc">
-        Preencha o formulário e um designer entra em contato para apresentar seu projeto 3D — sem compromisso, sem visita obrigatória.
+        Preencha o formulário e um designer D'Styll entra em contato para apresentar seu projeto personalizado.
       </p>
       <div class="side-stats">
         <div><div class="side-stat-num">30<sup>+</sup></div><div class="side-stat-label">Anos de tradição</div></div>
@@ -352,9 +352,9 @@
 
   <div class="side-right">
     <div class="form-card">
-      <div class="form-eyebrow">Projeto 3D Gratuito</div>
+      <div class="form-eyebrow">Seu Projeto Exclusivo</div>
       <div class="form-title">Solicite seu projeto</div>
-      <div class="form-subtitle">Um designer entra em contato em até 2h úteis.</div>
+      <div class="form-subtitle">Um designer D'Styll entra em contato para apresentar o seu projeto.</div>
       <form id="leadForm">
         <div class="form-row">
           <div class="form-group"><label>Nome</label><input type="text" name="nome" placeholder="Seu nome" required></div>
@@ -390,7 +390,7 @@
       <div class="thank-you" id="thankYou">
         <div class="thank-you-icon">✅</div>
         <h3>Recebemos sua solicitação!</h3>
-        <p>Um designer D'Styll entrará em contato pelo WhatsApp em breve com o seu projeto 3D gratuito.</p>
+        <p>Um designer D'Styll entrará em contato pelo WhatsApp em breve com o seu projeto exclusivo.</p>
       </div>
     </div>
   </div>
@@ -401,7 +401,7 @@
   <div class="trust-bar-item"><span>⭐</span> 100+ avaliações 5 estrelas no Google</div>
   <div class="trust-bar-item"><span>🏭</span> Fábrica própria — sem terceiros</div>
   <div class="trust-bar-item"><span>✅</span> Zero reclamações no Reclame Aqui</div>
-  <div class="trust-bar-item"><span>📐</span> Projeto 3D gratuito e sem compromisso</div>
+  <div class="trust-bar-item"><span>📐</span> Visualize seu projeto antes de decidir</div>
 </div>
 
 <!-- ─── DEPOIMENTOS ─── -->
@@ -486,8 +486,8 @@
   <h2 class="sec-title">Respondemos antes<br>que você <em>precise perguntar</em></h2>
   <div class="faq-list">
     <div class="faq-item">
-      <div class="faq-question">O projeto 3D é realmente gratuito?<div class="faq-icon">+</div></div>
-      <div class="faq-answer">Sim. O projeto 3D é completamente gratuito e sem compromisso. Só avançamos para produção quando você estiver 100% satisfeita com o resultado visual e aprovar cada detalhe.</div>
+      <div class="faq-question">Como funciona a apresentação do projeto?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Após o primeiro contato, um designer apresenta o projeto 3D do seu ambiente. Só avançamos para produção quando cada detalhe estiver aprovado por você — nenhuma peça é fabricada sem a sua validação.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Quanto tempo leva para receber o projeto?<div class="faq-icon">+</div></div>
@@ -512,9 +512,9 @@
 <section class="section-cta">
   <div class="sec-eyebrow">Próximo passo</div>
   <h2 class="sec-title">Seu projeto começa com<br><em>uma conversa gratuita</em></h2>
-  <p class="cta-sub">Preencha o formulário, um designer entra em contato e você recebe seu projeto 3D sem compromisso.</p>
+  <p class="cta-sub">Preencha o formulário e um designer D'Styll entra em contato para apresentar o seu projeto personalizado.</p>
   <button class="btn-cta-scroll" onclick="document.querySelector('.side-right').scrollIntoView({behavior:'smooth'})">
-    Solicitar Projeto 3D Gratuito →
+    Solicitar Seu Projeto Exclusivo →
   </button>
 </section>
 
@@ -530,7 +530,7 @@
   document.getElementById('leadForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(this));
-    const msg = `Olá! Preenchi o formulário e tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto 3D gratuito.`;
+    const msg = `Olá! Preenchi o formulário e tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto exclusivo.`;
     this.style.display = 'none';
     document.getElementById('thankYou').style.display = 'block';
     setTimeout(() => window.open('https://wa.me/5541984951207?text=' + encodeURIComponent(msg), '_blank'), 1500);
