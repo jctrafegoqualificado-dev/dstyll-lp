@@ -15,18 +15,17 @@
       --charcoal: #2D2D2D;
       --gold: #C4A35A;
       --gold-light: #E8C97A;
+      --red: #f04144;
+      --red-dark: #c72d30;
       --cream: #F8F4EE;
       --white: #ffffff;
       --green-wp: #25D366;
       --green-wp-dark: #1DA851;
-      --red-accent: #f04144;
       --gray: #888888;
       --light-gray: #f5f5f5;
-      --border: #e8e0d4;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Montserrat', sans-serif;
       color: var(--charcoal);
@@ -53,10 +52,10 @@
     }
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--white);
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       transition: color 0.4s;
     }
     nav.scrolled .nav-logo { color: var(--dark); }
@@ -76,7 +75,7 @@
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(160deg, #0f0f0f 0%, #1a1a1a 40%, #2a2218 100%);
+      background: #0d0d0d;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -85,12 +84,47 @@
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
-      content: '';
+    /* fundo animado com gradiente */
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80') center/cover no-repeat;
-      opacity: 0.12;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(240,65,68,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(196,163,90,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #0d0d0d 0%, #171717 100%);
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      0%   { background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(240,65,68,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(196,163,90,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #0d0d0d 0%, #171717 100%); }
+      100% { background:
+        radial-gradient(ellipse 80% 60% at 75% 25%, rgba(240,65,68,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 25% 75%, rgba(196,163,90,0.10) 0%, transparent 55%),
+        linear-gradient(160deg, #0d0d0d 0%, #1a1510 100%); }
+    }
+    /* linhas decorativas */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-lines span {
+      position: absolute;
+      display: block;
+      background: linear-gradient(90deg, transparent, rgba(240,65,68,0.15), transparent);
+      height: 1px;
+      width: 100%;
+      animation: lineMove 6s linear infinite;
+    }
+    .hero-lines span:nth-child(1) { top: 20%; animation-delay: 0s; }
+    .hero-lines span:nth-child(2) { top: 50%; animation-delay: 2s; opacity: 0.5; }
+    .hero-lines span:nth-child(3) { top: 80%; animation-delay: 4s; opacity: 0.3; }
+    @keyframes lineMove {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     .hero::after {
       content: '';
@@ -98,6 +132,7 @@
       bottom: 0; left: 0; right: 0;
       height: 120px;
       background: linear-gradient(to bottom, transparent, var(--white));
+      z-index: 1;
     }
     .hero-content {
       position: relative;
@@ -105,41 +140,77 @@
       max-width: 860px;
     }
     .hero-badge {
-      display: inline-block;
-      background: rgba(196,163,90,0.15);
-      border: 1px solid rgba(196,163,90,0.4);
-      color: var(--gold-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(240,65,68,0.1);
+      border: 1px solid rgba(240,65,68,0.35);
+      color: var(--red);
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2.5px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 8px 20px;
+      padding: 9px 22px;
       border-radius: 50px;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
       animation: fadeDown 0.8s ease forwards;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: blinkDot 1.5s ease-in-out infinite;
+    }
+    @keyframes blinkDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 5vw, 58px);
+      font-size: clamp(30px, 5vw, 56px);
       font-weight: 700;
       color: var(--white);
       line-height: 1.2;
-      margin-bottom: 28px;
+      margin-bottom: 12px;
       animation: fadeDown 0.8s 0.15s ease both;
     }
-    .hero h1 em {
+    /* texto rotativo na headline */
+    .hero-rotating-wrap {
+      overflow: hidden;
+      height: clamp(42px, 6vw, 72px);
+      display: block;
+      margin-bottom: 28px;
+    }
+    .hero-rotating {
+      display: flex;
+      flex-direction: column;
+      animation: rotateText 9s ease-in-out infinite;
+    }
+    .hero-rotating span {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 700;
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--red);
+      line-height: clamp(42px, 6vw, 72px);
+      flex-shrink: 0;
+    }
+    @keyframes rotateText {
+      0%,  28% { transform: translateY(0); }
+      33%, 61% { transform: translateY(-33.33%); }
+      66%, 94% { transform: translateY(-66.66%); }
+      100%     { transform: translateY(0); }
     }
     .hero-sub {
-      font-size: clamp(16px, 2vw, 20px);
-      color: rgba(255,255,255,0.75);
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.65);
       font-weight: 300;
-      line-height: 1.7;
-      max-width: 640px;
+      line-height: 1.8;
+      max-width: 620px;
       margin: 0 auto 44px;
       animation: fadeDown 0.8s 0.3s ease both;
     }
+    .hero-sub strong { color: rgba(255,255,255,0.95); font-weight: 600; }
     .hero-cta-group {
       display: flex;
       gap: 16px;
@@ -158,16 +229,26 @@
       font-size: 15px;
       font-weight: 700;
       text-decoration: none;
-      letter-spacing: 0.3px;
       transition: all 0.3s;
       box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: skewX(-20deg);
+      animation: shine 3.5s infinite;
     }
     .btn-primary:hover {
       background: var(--green-wp-dark);
       transform: translateY(-3px);
       box-shadow: 0 12px 40px rgba(37,211,102,0.45);
     }
-    .btn-secondary {
+    .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -178,17 +259,18 @@
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.25);
       transition: all 0.3s;
     }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.6);
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.55);
     }
+    /* stats hero */
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 48px;
+      gap: 0;
       margin-top: 64px;
       flex-wrap: wrap;
       animation: fadeDown 0.8s 0.6s ease both;
@@ -197,35 +279,72 @@
     }
     .hero-stat {
       text-align: center;
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,0.1);
     }
+    .hero-stat:last-child { border-right: none; }
     .hero-stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
+      font-size: 40px;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--white);
     }
+    .hero-stat-num sup { font-size: 20px; color: var(--red); }
     .hero-stat-label {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 1px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 4px;
+      margin-top: 6px;
     }
+    @media (max-width: 600px) {
+      .hero-stat { padding: 16px 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    }
+
+    /* ─── BARRA VERMELHA ─── */
+    .red-bar {
+      background: var(--red);
+      padding: 18px 24px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .red-bar strong { font-weight: 800; }
 
     /* ─── DOR ─── */
     .section-dor {
-      background: var(--cream);
+      background: var(--white);
       padding: 100px 24px;
+      position: relative;
+    }
+    .section-dor::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--red), transparent);
     }
     .container { max-width: 880px; margin: 0 auto; }
-    .container-wide { max-width: 1100px; margin: 0 auto; }
+    .container-wide { max-width: 1120px; margin: 0 auto; }
+
     .section-eyebrow {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--red-accent);
+      color: var(--red);
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 2px;
+      background: var(--red);
     }
     .section-title {
       font-family: 'Playfair Display', serif;
@@ -235,25 +354,25 @@
       line-height: 1.25;
       margin-bottom: 28px;
     }
-    .section-title em { font-style: italic; color: var(--gold); }
+    .section-title em { font-style: italic; color: var(--red); }
+    .section-title-gold em { color: var(--gold); }
     .section-body {
       font-size: 17px;
       line-height: 1.9;
-      color: #444;
+      color: #555;
       margin-bottom: 24px;
     }
     .section-body strong { color: var(--dark); font-weight: 700; }
     .callout-box {
-      background: var(--white);
-      border-left: 4px solid var(--red-accent);
+      background: #fff5f5;
+      border-left: 4px solid var(--red);
       border-radius: 0 12px 12px 0;
       padding: 28px 32px;
       margin: 40px 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
     .callout-box p {
       font-size: 17px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--charcoal);
       font-style: italic;
     }
@@ -269,49 +388,77 @@
     .section-transform::before {
       content: '';
       position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(196,163,90,0.08) 0%, transparent 70%);
+      top: -150px; right: -150px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(240,65,68,0.06) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .section-transform .section-eyebrow { color: var(--gold); }
+    .section-transform::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(196,163,90,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .section-transform .section-eyebrow { color: var(--red); }
+    .section-transform .section-eyebrow::before { background: var(--red); }
     .section-transform .section-title { color: var(--white); }
-    .section-transform .section-body { color: rgba(255,255,255,0.75); }
+    .section-transform .section-title em { color: var(--gold-light); }
+    .section-transform .section-body { color: rgba(255,255,255,0.6); }
+
     .transform-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 20px;
       margin-top: 56px;
     }
     .transform-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(196,163,90,0.15);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 16px;
       padding: 36px 32px;
-      transition: all 0.3s;
+      transition: all 0.35s;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
+      position: relative;
+      overflow: hidden;
     }
-    .transform-card.visible {
-      animation: fadeUp 0.6s ease forwards;
+    .transform-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
     }
+    .transform-card:hover::before { transform: scaleX(1); }
+    .transform-card.visible { animation: fadeUp 0.6s ease forwards; }
     .transform-card:hover {
-      background: rgba(196,163,90,0.06);
-      border-color: rgba(196,163,90,0.35);
-      transform: translateY(-4px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(240,65,68,0.25);
+      transform: translateY(-6px);
     }
     .card-icon {
-      width: 48px; height: 48px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      border-radius: 12px;
+      width: 50px; height: 50px;
+      background: rgba(240,65,68,0.12);
+      border: 1px solid rgba(240,65,68,0.25);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
       margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .transform-card:hover .card-icon {
+      background: rgba(240,65,68,0.2);
     }
     .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 600;
       color: var(--white);
       margin-bottom: 12px;
@@ -319,93 +466,78 @@
     .card-text {
       font-size: 14px;
       line-height: 1.8;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
     }
 
     /* ─── PROVA SOCIAL ─── */
     .section-proof {
-      background: var(--white);
+      background: var(--light-gray);
       padding: 100px 24px;
     }
-    .proof-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+    .proof-header { text-align: center; margin-bottom: 60px; }
     .stars-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: #FFF8E7;
+      gap: 10px;
+      background: var(--white);
       border: 1px solid #F4D878;
       border-radius: 50px;
       padding: 10px 24px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #8B6914;
       margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
+      gap: 24px;
     }
     .testimonial-card {
-      background: var(--cream);
+      background: var(--white);
       border-radius: 20px;
       padding: 36px 32px;
-      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       opacity: 0;
       transform: translateY(20px);
+      transition: all 0.35s;
+      border-top: 3px solid var(--red);
     }
-    .testimonial-card.visible {
-      animation: fadeUp 0.6s ease forwards;
-    }
+    .testimonial-card.visible { animation: fadeUp 0.6s ease forwards; }
+    .testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.12); transform: translateY(-4px); }
     .testimonial-quote {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      color: var(--gold);
+      font-size: 52px;
+      color: var(--red);
       line-height: 1;
       margin-bottom: 16px;
     }
     .testimonial-text {
       font-size: 15px;
-      line-height: 1.85;
-      color: #444;
-      margin-bottom: 24px;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 28px;
       font-style: italic;
     }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
     .author-avatar {
-      width: 44px; height: 44px;
+      width: 46px; height: 46px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
+      background: linear-gradient(135deg, var(--red), #ff6b6e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700;
       color: var(--white);
       font-family: 'Playfair Display', serif;
+      flex-shrink: 0;
     }
-    .author-name {
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--dark);
-    }
-    .author-detail {
-      font-size: 12px;
-      color: var(--gray);
-      margin-top: 2px;
-    }
-    .stars { color: #F4C430; font-size: 14px; margin-top: 4px; }
+    .author-name { font-weight: 700; font-size: 14px; color: var(--dark); }
+    .author-detail { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .stars { color: #F4C430; font-size: 13px; margin-top: 3px; }
 
     /* ─── DIFERENCIAIS ─── */
     .section-diff {
-      background: var(--light-gray);
+      background: var(--white);
       padding: 100px 24px;
     }
     .diff-grid {
@@ -415,71 +547,40 @@
       margin-top: 56px;
     }
     .diff-item {
-      background: var(--white);
+      background: var(--light-gray);
       border-radius: 16px;
       padding: 32px 28px;
       display: flex;
       gap: 18px;
       align-items: flex-start;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-      transition: all 0.3s;
+      transition: all 0.35s;
       opacity: 0;
       transform: translateY(16px);
+      border-bottom: 3px solid transparent;
     }
-    .diff-item.visible {
-      animation: fadeUp 0.5s ease forwards;
-    }
+    .diff-item.visible { animation: fadeUp 0.5s ease forwards; }
     .diff-item:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
+      background: #fff0f0;
+      border-bottom-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(240,65,68,0.1);
     }
     .diff-check {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      width: 38px; height: 38px;
+      background: var(--red);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
+      font-size: 17px;
       flex-shrink: 0;
-    }
-    .diff-text-title {
+      color: white;
       font-weight: 700;
-      font-size: 15px;
-      color: var(--dark);
-      margin-bottom: 6px;
     }
-    .diff-text-desc {
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--gray);
-    }
-
-    /* ─── HISTÓRIA ─── */
-    .section-historia {
-      background: var(--white);
-      padding: 100px 24px;
-    }
-    .historia-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    @media (max-width: 768px) {
-      .historia-inner { grid-template-columns: 1fr; gap: 48px; }
-    }
-    .historia-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 120px;
-      font-weight: 700;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: -20px;
-    }
-    .historia-num span { color: var(--gold); }
+    .diff-text-title { font-weight: 700; font-size: 15px; color: var(--dark); margin-bottom: 6px; }
+    .diff-text-desc { font-size: 13px; line-height: 1.7; color: var(--gray); }
 
     /* ─── OFERTA/CTA ─── */
     .section-oferta {
-      background: linear-gradient(160deg, #0f0f0f, #1a1a1a 60%, #221e14);
+      background: linear-gradient(160deg, #0d0d0d, #1a1a1a 60%, #1a0d0d);
       padding: 100px 24px;
       text-align: center;
       position: relative;
@@ -491,9 +592,10 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(196,163,90,0.07) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(240,65,68,0.07) 0%, transparent 65%);
     }
-    .section-oferta .section-eyebrow { color: var(--gold); }
+    .section-oferta .section-eyebrow { color: var(--red); justify-content: center; }
+    .section-oferta .section-eyebrow::before { background: var(--red); }
     .section-oferta .section-title { color: var(--white); }
     .steps-list {
       list-style: none;
@@ -505,40 +607,35 @@
       display: flex;
       align-items: flex-start;
       gap: 18px;
-      padding: 20px 0;
+      padding: 22px 0;
       border-bottom: 1px solid rgba(255,255,255,0.07);
       opacity: 0;
       transform: translateX(-20px);
     }
-    .steps-list li.visible {
-      animation: fadeRight 0.5s ease forwards;
-    }
+    .steps-list li.visible { animation: fadeRight 0.5s ease forwards; }
     .step-num {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      width: 38px; height: 38px;
+      background: var(--red);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
-      color: var(--dark);
+      font-weight: 800; font-size: 14px;
+      color: var(--white);
       flex-shrink: 0;
     }
-    .step-text { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.8); }
+    .step-text { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.75); }
     .step-text strong { color: var(--white); }
+
     .urgencia-box {
-      background: rgba(196,163,90,0.08);
-      border: 1px solid rgba(196,163,90,0.25);
+      background: rgba(240,65,68,0.08);
+      border: 1px solid rgba(240,65,68,0.3);
       border-radius: 16px;
       padding: 28px 36px;
       max-width: 560px;
       margin: 0 auto 48px;
     }
-    .urgencia-box p {
-      color: rgba(255,255,255,0.75);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .urgencia-box strong { color: var(--gold-light); }
+    .urgencia-box p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.7; }
+    .urgencia-box strong { color: var(--red); }
+
     .cta-final-group {
       display: flex;
       flex-direction: column;
@@ -556,7 +653,6 @@
       font-size: 18px;
       font-weight: 800;
       text-decoration: none;
-      letter-spacing: 0.3px;
       transition: all 0.3s;
       box-shadow: 0 12px 40px rgba(37,211,102,0.4);
       position: relative;
@@ -576,67 +672,54 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 50px rgba(37,211,102,0.5);
     }
-    .cta-disclaimer {
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-    }
+    .cta-disclaimer { font-size: 13px; color: rgba(255,255,255,0.35); }
+
     .showroom-info {
-      margin-top: 48px;
-      padding-top: 48px;
+      margin-top: 56px;
+      padding-top: 56px;
       border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: center;
-      gap: 48px;
+      gap: 56px;
       flex-wrap: wrap;
     }
-    .showroom-item {
-      text-align: center;
-    }
     .showroom-item-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 8px; font-weight: 700;
     }
-    .showroom-item-value {
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
+    .showroom-item-value { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
 
     /* ─── FOOTER ─── */
     footer {
-      background: #0a0a0a;
+      background: #060606;
       padding: 40px 24px;
       text-align: center;
     }
     .footer-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 2px;
+      font-size: 30px; font-weight: 700;
+      color: var(--white); letter-spacing: 3px;
       margin-bottom: 12px;
     }
-    .footer-tagline {
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 1px;
+    .footer-divider {
+      width: 40px; height: 2px;
+      background: var(--red);
+      margin: 16px auto;
     }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.5px; }
 
     /* ─── WHATSAPP FLOAT ─── */
     .wp-float {
       position: fixed;
       bottom: 28px; right: 28px;
       z-index: 999;
-      width: 60px; height: 60px;
+      width: 62px; height: 62px;
       background: var(--green-wp);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 6px 24px rgba(37,211,102,0.5);
       text-decoration: none;
-      animation: pulse-wp 2.5s infinite;
+      animation: pulseWP 2.5s infinite;
       transition: transform 0.3s;
     }
     .wp-float:hover { transform: scale(1.1); }
@@ -645,37 +728,33 @@
     /* ─── ANIMATIONS ─── */
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-24px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeRight {
       from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
+      to   { opacity: 1; transform: translateX(0); }
     }
     @keyframes shine {
-      0% { left: -60%; }
+      0%   { left: -60%; }
       100% { left: 140%; }
     }
-    @keyframes pulse-wp {
+    @keyframes pulseWP {
       0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
-      50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.1); }
+      50%       { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 14px rgba(37,211,102,0.1); }
     }
-
-    /* ─── COUNTERS ─── */
-    .counter { display: inline-block; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
       nav.scrolled { padding: 12px 20px; }
-      .hero-stats { gap: 28px; }
-      .hero-stat-num { font-size: 28px; }
-      .btn-primary, .btn-secondary { padding: 15px 24px; font-size: 14px; }
-      .btn-cta-final { padding: 18px 32px; font-size: 16px; }
+      .btn-primary, .btn-ghost { padding: 14px 22px; font-size: 14px; }
+      .btn-cta-final { padding: 18px 30px; font-size: 15px; }
       .callout-box { padding: 20px 20px; }
+      .showroom-info { gap: 28px; }
     }
   </style>
 </head>
@@ -691,39 +770,54 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines">
+      <span></span><span></span><span></span>
+    </div>
     <div class="hero-content">
-      <div class="hero-badge">✦ Curitiba · Desde 1994 · Família Oliveira</div>
-      <h1>
-        Você vai investir R$30 a R$80 mil<br>
-        numa cozinha planejada.<br>
-        <em>A decisão que você toma hoje<br>define se vai se orgulhar — ou se arrepender.</em>
-      </h1>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        D'Styll · Curitiba · Desde 1994
+      </div>
+      <h1>A cozinha que você imaginou<br>merece ser entregue como</h1>
+      <div class="hero-rotating-wrap">
+        <div class="hero-rotating">
+          <span>você imaginou.</span>
+          <span>no projeto 3D.</span>
+          <span>você merece.</span>
+        </div>
+      </div>
       <p class="hero-sub">
-        Há 30 anos, a D'Styll entrega cozinhas que ficam <strong style="color:white">exatamente como no projeto</strong>. Sem surpresas. Sem atrasos. Sem decepcionar.
+        Há 30 anos, a D'Styll entrega ambientes que ficam <strong>exatamente como no projeto</strong>. Sem surpresas. Sem atrasos. Sem decepcionar.
       </p>
       <div class="hero-cta-group">
         <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre minha cozinha planejada." class="btn-primary" target="_blank">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Falar com um Designer
         </a>
-        <a href="#oferta" class="btn-secondary">Ver como funciona →</a>
+        <a href="#oferta" class="btn-ghost">Ver como funciona →</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-num"><span class="counter" data-target="30">0</span>+</div>
+          <div class="hero-stat-num"><span class="counter" data-target="30">0</span><sup>+</sup></div>
           <div class="hero-stat-label">Anos de Tradição</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num"><span class="counter" data-target="100">0</span>+</div>
+          <div class="hero-stat-num"><span class="counter" data-target="100">0</span><sup>+</sup></div>
           <div class="hero-stat-label">Avaliações 5 ★</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num"><span class="counter" data-target="0">0</span></div>
-          <div class="hero-stat-label">Reclamações no Reclame Aqui</div>
+          <div class="hero-stat-label">Reclamações Reclame Aqui</div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- BARRA VERMELHA -->
+  <div class="red-bar">
+    🏭 Fábrica própria · Showroom no Batel · <strong>Projeto 3D gratuito e sem compromisso</strong>
+  </div>
 
   <!-- DOR -->
   <section class="section-dor">
@@ -740,26 +834,26 @@
       </p>
       <div class="callout-box">
         <p>Isso não é azar. <strong>É o padrão de quem contrata errado.</strong><br><br>
-        A sua cozinha vai ser o coração da sua casa por 20, 30 anos. Ela merece ser feita por quem vai estar aqui amanhã, depois de amanhã, daqui a dez anos — por uma família que construiu sua reputação tijolo por tijolo durante três décadas.</p>
+        A sua cozinha vai ser o coração da sua casa por 20, 30 anos. Ela merece ser feita por quem vai estar aqui amanhã, depois de amanhã, daqui a dez anos — por uma empresa que construiu sua reputação tijolo por tijolo durante três décadas em Curitiba.</p>
       </div>
       <p class="section-body">
-        A D'Styll não é uma franquia. Não é um site que terceiriza a produção. É uma família curitibana, com fábrica própria, designer dedicado ao seu projeto, e o nome em cada móvel que sai pela porta.
+        A D'Styll não é uma franquia. Não é um site que terceiriza a produção. É uma empresa curitibana, com fábrica própria, designer dedicado ao seu projeto, e o nome em cada móvel que sai pela porta.
       </p>
     </div>
   </section>
 
   <!-- TRANSFORMAÇÃO -->
   <section class="section-transform">
-    <div class="container">
+    <div class="container" style="position:relative;z-index:2;">
       <p class="section-eyebrow">A sua nova realidade</p>
-      <h2 class="section-title">
-        Imagine acordar amanhã<br>e sentir <em>esse orgulho</em>.
+      <h2 class="section-title section-title-gold">
+        Imagine acordar amanhã<br>e sentir <em>esse orgulho.</em>
       </h2>
       <p class="section-body">
         Cada detalhe no lugar. As ferragens que deslizam com suavidade. A iluminação que valoriza cada superfície. O espaço que parece maior, mais organizado, mais <em style="color:var(--gold-light)">seu</em>. O projeto 3D que virou realidade — centímetro por centímetro.
       </p>
     </div>
-    <div class="container-wide">
+    <div class="container-wide" style="position:relative;z-index:2;">
       <div class="transform-grid">
         <div class="transform-card">
           <div class="card-icon">🏭</div>
@@ -772,14 +866,14 @@
           <div class="card-text">Seu projeto é único. Não é catálogo, não é cópia. Cada ambiente é desenhado por um designer dedicado só à sua casa.</div>
         </div>
         <div class="transform-card">
-          <div class="card-icon">✦</div>
+          <div class="card-icon">📐</div>
           <div class="card-title">O 3D É Contrato</div>
           <div class="card-text">O que você aprova no projeto 3D é exatamente o que será entregue. Sem surpresas, sem "ficou parecido".</div>
         </div>
         <div class="transform-card">
           <div class="card-icon">🏆</div>
           <div class="card-title">Ferragens de Alto Padrão</div>
-          <div class="card-text">Dobradiças, puxadores e sistemas de deslizamento de marcas premium. Sua cozinha abre e fecha com perfeição por décadas.</div>
+          <div class="card-text">Dobradiças, puxadores e sistemas de deslizamento premium. Sua cozinha abre e fecha com perfeição por décadas.</div>
         </div>
         <div class="transform-card">
           <div class="card-icon">📍</div>
@@ -787,7 +881,7 @@
           <div class="card-text">Venha tocar, abrir, fechar. Veja e sinta a qualidade dos materiais antes de assinar qualquer coisa.</div>
         </div>
         <div class="transform-card">
-          <div class="card-icon">👤</div>
+          <div class="card-icon">💬</div>
           <div class="card-title">Atendimento Direto</div>
           <div class="card-text">Você fala com o designer responsável pelo seu projeto. Não com call center. Não com atendente de triagem.</div>
         </div>
@@ -799,7 +893,7 @@
   <section class="section-proof">
     <div class="container-wide">
       <div class="proof-header">
-        <p class="section-eyebrow">Reconhecida por quem exige o melhor</p>
+        <p class="section-eyebrow" style="justify-content:center;">Reconhecida por quem exige o melhor</p>
         <h2 class="section-title">O que os nossos clientes <em>dizem depois</em> da entrega</h2>
         <div class="stars-badge">
           ⭐ A melhor marcenaria de Curitiba no Google · 100+ avaliações 5 estrelas
@@ -820,7 +914,7 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">Já tinha sido enganada duas vezes por marcenarias que não cumpriram o prazo. Com a D'Styll foi completamente diferente: entregaram antes do prazo combinado e ainda fizeram um ajuste pós-entrega sem cobrar nada.</p>
+          <p class="testimonial-text">Já tinha sido enganada duas vezes por marcenarias que não cumpriram o prazo. Com a D'Styll foi completamente diferente: entregaram antes do prazo e ainda fizeram um ajuste pós-entrega sem cobrar nada.</p>
           <div class="testimonial-author">
             <div class="author-avatar">R</div>
             <div>
@@ -855,40 +949,40 @@
         <div class="diff-item">
           <div class="diff-check">✦</div>
           <div>
-            <div class="diff-text-title">30 anos de tradição familiar</div>
-            <div class="diff-text-desc">Fundada em 1994 por José Oliveira, hoje com seu filho Guilherme. Uma história construída sobre reputação.</div>
+            <div class="diff-text-title">30 anos de tradição em Curitiba</div>
+            <div class="diff-text-desc">Fundada em 1994, com história construída sobre reputação e excelência em cada entrega.</div>
           </div>
         </div>
         <div class="diff-item">
-          <div class="diff-check">✦</div>
+          <div class="diff-check">★</div>
           <div>
             <div class="diff-text-title">100+ avaliações 5 estrelas no Google</div>
             <div class="diff-text-desc">Leia cada uma. São clientes reais, projetos reais, entregas reais.</div>
           </div>
         </div>
         <div class="diff-item">
-          <div class="diff-check">✦</div>
+          <div class="diff-check">0</div>
           <div>
             <div class="diff-text-title">Zero reclamações no Reclame Aqui</div>
             <div class="diff-text-desc">Em 30 anos de história. Isso não é sorte — é cultura de excelência.</div>
           </div>
         </div>
         <div class="diff-item">
-          <div class="diff-check">✦</div>
+          <div class="diff-check">🏭</div>
           <div>
             <div class="diff-text-title">Fábrica própria no Umbará</div>
             <div class="diff-text-desc">Controlamos a produção do início ao fim. Sem terceirizados, sem intermediários, sem surpresas.</div>
           </div>
         </div>
         <div class="diff-item">
-          <div class="diff-check">✦</div>
+          <div class="diff-check">📍</div>
           <div>
             <div class="diff-text-title">Showroom no Batel</div>
             <div class="diff-text-desc">Av. Silva Jardim, 2251. Venha sentir a qualidade com as próprias mãos antes de decidir.</div>
           </div>
         </div>
         <div class="diff-item">
-          <div class="diff-check">✦</div>
+          <div class="diff-check">3D</div>
           <div>
             <div class="diff-text-title">Projeto 3D gratuito e sem compromisso</div>
             <div class="diff-text-desc">Você vê o projeto antes de assinar qualquer coisa. Só avançamos quando você estiver 100% satisfeita.</div>
@@ -918,7 +1012,7 @@
         </li>
         <li>
           <div class="step-num">4</div>
-          <div class="step-text"><strong>Você recebe um projeto 3D detalhado</strong>, sem compromisso. Cobramos só quando você disser: <em>"É exatamente isso."</em></div>
+          <div class="step-text"><strong>Você recebe um projeto 3D detalhado</strong>, sem compromisso. Cobramos só quando você disser: <em style="color:var(--red)">"É exatamente isso."</em></div>
         </li>
       </ul>
       <div class="urgencia-box">
@@ -938,7 +1032,7 @@
         </div>
         <div class="showroom-item">
           <div class="showroom-item-label">Horário</div>
-          <div class="showroom-item-value">Seg a Sex: 08h30 às 18h30<br>Sáb: 09h às 13h</div>
+          <div class="showroom-item-value">Seg a Sex: 08h30 às 18h30</div>
         </div>
         <div class="showroom-item">
           <div class="showroom-item-label">WhatsApp</div>
@@ -951,8 +1045,9 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">D'Styll</div>
+    <div class="footer-divider"></div>
     <p class="footer-tagline">Móveis sob medida para Curitiba e região desde 1994 · Tecnologia e tradição em cada milímetro</p>
-    <p style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:20px;">© 2026 D'Styll Móveis · Tradicional Família Curitibana</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.15);margin-top:16px;">© 2026 D'Styll Interiores · Todos os direitos reservados</p>
   </footer>
 
   <!-- WHATSAPP FLOAT -->
@@ -967,44 +1062,37 @@
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     });
 
-    // Intersection Observer para animações
+    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(() => entry.target.classList.add('visible'), i * 90);
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-
+    }, { threshold: 0.12 });
     document.querySelectorAll('.transform-card, .testimonial-card, .diff-item, .steps-list li').forEach(el => observer.observe(el));
 
     // Contadores animados
     function animateCounter(el) {
       const target = parseInt(el.dataset.target);
-      const duration = 1800;
+      const duration = 2000;
       const start = performance.now();
       function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
         el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
+        if (p < 1) requestAnimationFrame(update);
         else el.textContent = target;
       }
       requestAnimationFrame(update);
     }
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
+    const cObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); cObserver.unobserve(e.target); }
       });
     }, { threshold: 0.5 });
-
-    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+    document.querySelectorAll('.counter').forEach(el => cObserver.observe(el));
   </script>
 </body>
 </html>
