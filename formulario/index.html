@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D'Styll — Solicite seu Projeto 3D Gratuito</title>
+  <meta name="description" content="Preencha o formulário e receba seu projeto 3D gratuito. D'Styll Interiores — 30 anos em Curitiba.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #1a1a1a;
+      --red: #f04144;
+      --red-dark: #c72d30;
+      --gold: #C4A35A;
+      --gold-light: #E8C97A;
+      --white: #ffffff;
+      --green-wp: #25D366;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0d0d0d;
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── LAYOUT ─── */
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      min-height: 100vh;
+    }
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .side-left { min-height: 360px; }
+    }
+
+    /* ─── LADO ESQUERDO ─── */
+    .side-left {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 56px;
+    }
+    .side-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .side-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(13,13,13,0.5) 0%, rgba(13,13,13,0.85) 100%);
+    }
+    .side-content { position: relative; z-index: 2; }
+    .side-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 3px;
+      margin-bottom: 48px;
+    }
+    .side-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(240,65,68,0.12);
+      border: 1px solid rgba(240,65,68,0.35);
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .side-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .side-title em { font-style: italic; color: var(--red); }
+    .side-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .side-stats {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .side-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .side-stat-num sup { font-size: 16px; color: var(--red); }
+    .side-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .side-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+    }
+    .trust-icon {
+      width: 28px; height: 28px;
+      background: rgba(240,65,68,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ─── LADO DIREITO (FORMULÁRIO) ─── */
+    .side-right {
+      background: #111111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+    .form-card { width: 100%; max-width: 400px; }
+    .form-header { text-align: center; margin-bottom: 36px; }
+    .form-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .form-eyebrow::before, .form-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 20px; height: 1px;
+      background: var(--red);
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .form-subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+      -webkit-appearance: none;
+    }
+    .form-group select option { background: #111; color: var(--white); }
+    .form-group input::placeholder { color: rgba(255,255,255,0.2); }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--red);
+      background: rgba(240,65,68,0.05);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 17px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+    .btn-submit:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(240,65,68,0.45);
+    }
+    .form-privacy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* Tela de obrigado */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+      animation: fadeUp 0.5s ease;
+    }
+    .thank-you-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+    .thank-you h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .thank-you p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .thank-you-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── FOOTER ─── */
+    .page-footer {
+      background: #080808;
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shine {
+      0%   { left: -60%; }
+      100% { left: 140%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- LADO ESQUERDO -->
+  <div class="side-left">
+    <div class="side-bg"></div>
+    <div class="side-overlay"></div>
+    <div class="side-content">
+      <div class="side-logo">D'Styll</div>
+      <div class="side-badge">✦ Curitiba · Desde 1994</div>
+      <h1 class="side-title">
+        A cozinha que você imaginou<br>
+        merece ser entregue como<br>
+        <em>você merece.</em>
+      </h1>
+      <p class="side-desc">
+        Preencha o formulário ao lado e um dos nossos designers entrará em contato para apresentar seu projeto 3D — sem compromisso.
+      </p>
+      <div class="side-stats">
+        <div>
+          <div class="side-stat-num">30<sup>+</sup></div>
+          <div class="side-stat-label">Anos de tradição</div>
+        </div>
+        <div>
+          <div class="side-stat-num">100<sup>+</sup></div>
+          <div class="side-stat-label">Avaliações 5★</div>
+        </div>
+        <div>
+          <div class="side-stat-num">0</div>
+          <div class="side-stat-label">Reclamações</div>
+        </div>
+      </div>
+      <div class="side-trust">
+        <div class="trust-item"><div class="trust-icon">🏭</div> Fábrica própria no Umbará — sem terceirizados</div>
+        <div class="trust-item"><div class="trust-icon">📐</div> O 3D é contrato. O que você aprova é o que recebe</div>
+        <div class="trust-item"><div class="trust-icon">📍</div> Showroom no Batel · Av. Silva Jardim, 2251</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LADO DIREITO — FORMULÁRIO -->
+  <div class="side-right">
+    <div class="form-card">
+      <div class="form-header">
+        <div class="form-eyebrow">Projeto 3D Gratuito</div>
+        <div class="form-title">Solicite seu projeto</div>
+        <div class="form-subtitle">Preencha abaixo e um designer entrará em contato em até 2h úteis.</div>
+      </div>
+
+      <form id="leadForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp</label>
+            <input type="tel" name="whatsapp" placeholder="(41) 9xxxx-xxxx" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Qual ambiente você quer planejar?</label>
+          <select name="ambiente" required>
+            <option value="" disabled selected>Selecione o ambiente...</option>
+            <option>Cozinha planejada</option>
+            <option>Closet / Guarda-roupa</option>
+            <option>Sala planejada</option>
+            <option>Home office</option>
+            <option>Área gourmet</option>
+            <option>Mais de um ambiente</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Bairro</label>
+            <input type="text" name="bairro" placeholder="Ex: Batel, Água Verde..." required>
+          </div>
+          <div class="form-group">
+            <label>Quando precisa?</label>
+            <select name="prazo" required>
+              <option value="" disabled selected>Prazo...</option>
+              <option>Em até 3 meses</option>
+              <option>Entre 3 e 6 meses</option>
+              <option>Mais de 6 meses</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Quero Meu Projeto 3D →</button>
+        <p class="form-privacy">🔒 Seus dados são usados apenas para contato pela D'Styll. Sem spam.</p>
+      </form>
+
+      <div class="thank-you" id="thankYou">
+        <div class="thank-you-icon">✅</div>
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Um designer D'Styll vai entrar em contato pelo WhatsApp em breve para apresentar seu projeto 3D gratuito.</p>
+        <p class="thank-you-sub">Verifique seu WhatsApp · (41) 98495-1207</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  © 2026 D'Styll Interiores · Av. Silva Jardim, 2251 — Batel, Curitiba · (41) 98495-1207
+</div>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(this));
+    const msg = `Olá! Preenchi o formulário e tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto 3D gratuito.`;
+    // Esconde formulário, mostra obrigado
+    this.style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+    // Abre WhatsApp após 1.5s (usuário já viu a tela de obrigado)
+    setTimeout(() => {
+      window.open('https://wa.me/5541984951207?text=' + encodeURIComponent(msg), '_blank');
+    }, 1500);
+  });
+</script>
+</body>
+</html>
