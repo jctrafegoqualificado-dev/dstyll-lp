@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D'Styll — Solicite seu Projeto de Móveis Planejados</title>
+  <meta name="description" content="Preencha o formulário e receba seu projeto de móveis planejados. D'Styll Interiores — 30 anos em Curitiba.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #1a1a1a;
+      --red: #f04144;
+      --red-dark: #c72d30;
+      --gold: #C4A35A;
+      --gold-light: #E8C97A;
+      --white: #ffffff;
+      --green-wp: #25D366;
+      --green-wp-dark: #1DA851;
+      --gray: #888;
+      --cream: #F8F4EE;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0d0d0d;
+      color: var(--white);
+    }
+
+    /* ─── HERO SPLIT ─── */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      min-height: 100vh;
+    }
+    @media (max-width: 960px) {
+      .hero-split { grid-template-columns: 1fr; }
+      .side-left { min-height: 420px; }
+      .side-right { padding: 48px 24px; }
+    }
+
+    .side-left {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 56px;
+    }
+    .side-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80');
+      background-size: cover; background-position: center;
+    }
+    .side-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(13,13,13,0.45) 0%, rgba(13,13,13,0.88) 100%);
+    }
+    .side-content { position: relative; z-index: 2; }
+    .side-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700;
+      color: var(--white); letter-spacing: 3px;
+      margin-bottom: 48px;
+    }
+    .side-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(240,65,68,0.12);
+      border: 1px solid rgba(240,65,68,0.35);
+      color: var(--red);
+      font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; padding: 8px 18px; border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .side-badge-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    .side-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 46px); font-weight: 700;
+      line-height: 1.2; color: var(--white); margin-bottom: 20px;
+    }
+    .side-title em { font-style: italic; color: var(--red); }
+    .side-desc {
+      font-size: 15px; line-height: 1.85;
+      color: rgba(255,255,255,0.65); max-width: 480px; margin-bottom: 36px;
+    }
+    .side-stats { display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 32px; }
+    .side-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700; color: var(--white);
+    }
+    .side-stat-num sup { font-size: 16px; color: var(--red); }
+    .side-stat-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
+    .side-trust { display: flex; flex-direction: column; gap: 10px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.65); }
+    .trust-icon {
+      width: 28px; height: 28px; background: rgba(240,65,68,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+
+    /* ─── FORMULÁRIO ─── */
+    .side-right {
+      background: #111;
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px 40px;
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+    .form-card { width: 100%; max-width: 400px; }
+    .form-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red); margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-eyebrow::before, .form-eyebrow::after { content:''; display:inline-block; width:20px; height:1px; background:var(--red); }
+    .form-title { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--white); margin-bottom:6px; text-align:center; }
+    .form-subtitle { font-size:13px; color:rgba(255,255,255,0.4); line-height:1.6; text-align:center; margin-bottom:28px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display:block; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:6px; }
+    .form-group input, .form-group select {
+      width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+      border-radius:10px; padding:13px 15px; font-family:'Montserrat',sans-serif;
+      font-size:14px; color:var(--white); outline:none;
+      transition:border-color 0.3s, background 0.3s; -webkit-appearance:none;
+    }
+    .form-group select option { background:#111; color:var(--white); }
+    .form-group input::placeholder { color:rgba(255,255,255,0.2); }
+    .form-group input:focus, .form-group select:focus { border-color:var(--red); background:rgba(240,65,68,0.05); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media(max-width:500px){ .form-row { grid-template-columns:1fr; } }
+    .btn-submit {
+      width:100%; background:var(--red); color:var(--white); border:none;
+      border-radius:50px; padding:16px; font-family:'Montserrat',sans-serif;
+      font-size:15px; font-weight:800; cursor:pointer; margin-top:8px;
+      transition:all 0.3s; position:relative; overflow:hidden;
+    }
+    .btn-submit::before { content:''; position:absolute; top:-50%; left:-60%; width:40%; height:200%; background:rgba(255,255,255,0.15); transform:skewX(-20deg); animation:shine 3s infinite; }
+    .btn-submit:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 28px rgba(240,65,68,0.45); }
+    .form-privacy { font-size:11px; color:rgba(255,255,255,0.22); text-align:center; margin-top:12px; line-height:1.6; }
+    .thank-you { display:none; text-align:center; padding:20px 0; animation:fadeUp 0.5s ease; }
+    .thank-you-icon { font-size:56px; margin-bottom:16px; }
+    .thank-you h3 { font-family:'Playfair Display',serif; font-size:24px; color:var(--white); margin-bottom:12px; }
+    .thank-you p { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.7; }
+
+    /* ─── BARRA TRUST ─── */
+    .trust-bar {
+      background: #161616;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-bar-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.55);
+    }
+    .trust-bar-item span { color: var(--red); font-size: 16px; }
+
+    /* ─── DEPOIMENTOS ─── */
+    .section-dep {
+      background: #111;
+      padding: 80px 40px;
+    }
+    .sec-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .sec-eyebrow::before, .sec-eyebrow::after { content:''; flex:0 0 24px; height:1px; background:var(--red); }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+      color: var(--white); text-align: center; margin-bottom: 48px; line-height: 1.3;
+    }
+    .sec-title em { font-style: italic; color: var(--red); }
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .dep-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--red);
+      border-radius: 16px;
+      padding: 32px 28px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.35s;
+    }
+    .dep-card.visible { animation: fadeUp 0.6s ease forwards; }
+    .dep-card:hover { background: rgba(255,255,255,0.05); transform: translateY(-4px); }
+    .dep-quote { font-family:'Playfair Display',serif; font-size:44px; color:var(--red); line-height:1; margin-bottom:12px; }
+    .dep-text { font-size:14px; line-height:1.85; color:rgba(255,255,255,0.65); font-style:italic; margin-bottom:24px; }
+    .dep-author { display:flex; align-items:center; gap:12px; }
+    .dep-avatar {
+      width:42px; height:42px; border-radius:50%;
+      background:linear-gradient(135deg,var(--red),#ff7070);
+      display:flex; align-items:center; justify-content:center;
+      font-size:16px; font-weight:700; color:var(--white);
+      font-family:'Playfair Display',serif; flex-shrink:0;
+    }
+    .dep-name { font-weight:700; font-size:13px; color:var(--white); }
+    .dep-detail { font-size:11px; color:rgba(255,255,255,0.35); margin-top:2px; }
+    .dep-stars { color:#F4C430; font-size:12px; margin-top:3px; }
+
+    /* ─── DIFERENCIAIS ─── */
+    .section-diff {
+      background: #0d0d0d;
+      padding: 80px 40px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .diff-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+      opacity: 0; transform: translateY(16px);
+      transition: all 0.35s;
+    }
+    .diff-item.visible { animation: fadeUp 0.5s ease forwards; }
+    .diff-item:hover { background:rgba(240,65,68,0.05); border-color:rgba(240,65,68,0.2); transform:translateY(-3px); }
+    .diff-icon {
+      width:36px; height:36px; background:var(--red); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:15px; flex-shrink:0; color:white; font-weight:700;
+    }
+    .diff-title { font-weight:700; font-size:14px; color:var(--white); margin-bottom:5px; }
+    .diff-desc { font-size:12px; line-height:1.7; color:rgba(255,255,255,0.45); }
+
+    /* ─── FAQ ─── */
+    .section-faq {
+      background: #111;
+      padding: 80px 40px;
+    }
+    .faq-list { max-width: 680px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0;
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      cursor: pointer;
+      font-size: 15px; font-weight: 600; color: var(--white);
+      transition: color 0.3s;
+      user-select: none;
+    }
+    .faq-question:hover { color: var(--red); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(240,65,68,0.12); border: 1px solid rgba(240,65,68,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--red); flex-shrink: 0;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--red); color: white; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.55);
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 20px; }
+
+    /* ─── CTA FINAL ─── */
+    .section-cta {
+      background: linear-gradient(160deg, #0d0d0d, #1a0d0d);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-cta::before {
+      content:''; position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      width:600px; height:600px;
+      background:radial-gradient(circle, rgba(240,65,68,0.07) 0%, transparent 65%);
+    }
+    .section-cta .sec-title { margin-bottom: 16px; position:relative; z-index:2; }
+    .cta-sub { font-size:15px; color:rgba(255,255,255,0.5); margin-bottom:36px; position:relative; z-index:2; }
+    .btn-cta-scroll {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--red); color: var(--white);
+      padding: 18px 44px; border-radius: 50px;
+      font-size: 16px; font-weight: 800; text-decoration: none;
+      cursor: pointer; border: none; font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s; position:relative; z-index:2; overflow:hidden;
+      box-shadow: 0 8px 32px rgba(240,65,68,0.35);
+    }
+    .btn-cta-scroll::before { content:''; position:absolute; top:-50%; left:-60%; width:40%; height:200%; background:rgba(255,255,255,0.15); transform:skewX(-20deg); animation:shine 3s infinite; }
+    .btn-cta-scroll:hover { background:var(--red-dark); transform:translateY(-3px); box-shadow:0 12px 40px rgba(240,65,68,0.5); }
+
+    /* ─── FOOTER ─── */
+    .page-footer {
+      background: #060606;
+      text-align: center; padding: 28px;
+      font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.5px;
+      line-height: 1.8;
+    }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes shine { 0%{left:-60%} 100%{left:140%} }
+  </style>
+</head>
+<body>
+
+<!-- ─── HERO SPLIT ─── -->
+<div class="hero-split">
+  <div class="side-left">
+    <div class="side-bg"></div>
+    <div class="side-overlay"></div>
+    <div class="side-content">
+      <div class="side-logo">D'Styll</div>
+      <div class="side-badge"><span class="side-badge-dot"></span>✦ Curitiba · Desde 1994</div>
+      <h1 class="side-title">
+        Os móveis que você imaginou<br>
+        merecem ser entregues como<br>
+        <em>você merece.</em>
+      </h1>
+      <p class="side-desc">
+        Preencha o formulário e um designer D'Styll entra em contato para apresentar seu projeto personalizado.
+      </p>
+      <div class="side-stats">
+        <div><div class="side-stat-num">30<sup>+</sup></div><div class="side-stat-label">Anos de tradição</div></div>
+        <div><div class="side-stat-num">100<sup>+</sup></div><div class="side-stat-label">Avaliações 5★</div></div>
+        <div><div class="side-stat-num">0</div><div class="side-stat-label">Reclamações</div></div>
+      </div>
+      <div class="side-trust">
+        <div class="trust-item"><div class="trust-icon">🏭</div> Fábrica própria no Umbará — sem terceirizados</div>
+        <div class="trust-item"><div class="trust-icon">📐</div> O 3D é contrato. O que você aprova é o que recebe</div>
+        <div class="trust-item"><div class="trust-icon">📍</div> Showroom no Batel · Av. Silva Jardim, 2251</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="side-right">
+    <div class="form-card">
+      <div class="form-eyebrow">Seu Projeto Exclusivo</div>
+      <div class="form-title">Solicite seu projeto</div>
+      <div class="form-subtitle">Um designer D'Styll entra em contato para apresentar o seu projeto.</div>
+      <form id="leadForm">
+        <div class="form-row">
+          <div class="form-group"><label>Nome</label><input type="text" name="nome" placeholder="Seu nome" required></div>
+          <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" placeholder="(41) 9xxxx-xxxx" required></div>
+        </div>
+        <div class="form-group">
+          <label>Qual ambiente você quer planejar?</label>
+          <select name="ambiente" required>
+            <option value="" disabled selected>Selecione o ambiente...</option>
+            <option>Móveis planejados</option>
+            <option>Closet / Guarda-roupa</option>
+            <option>Sala planejada</option>
+            <option>Home office</option>
+            <option>Área gourmet</option>
+            <option>Mais de um ambiente</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Bairro</label><input type="text" name="bairro" placeholder="Ex: Batel..." required></div>
+          <div class="form-group">
+            <label>Quando precisa?</label>
+            <select name="prazo" required>
+              <option value="" disabled selected>Prazo...</option>
+              <option>Em até 3 meses</option>
+              <option>Entre 3 e 6 meses</option>
+              <option>Mais de 6 meses</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Quero Meu Projeto 3D →</button>
+        <p class="form-privacy">🔒 Seus dados são usados apenas para contato pela D'Styll. Sem spam.</p>
+      </form>
+      <div class="thank-you" id="thankYou">
+        <div class="thank-you-icon">✅</div>
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Um designer D'Styll entrará em contato pelo WhatsApp em breve com o seu projeto exclusivo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── BARRA TRUST ─── -->
+<div class="trust-bar">
+  <div class="trust-bar-item"><span>⭐</span> 100+ avaliações 5 estrelas no Google</div>
+  <div class="trust-bar-item"><span>🏭</span> Fábrica própria — sem terceiros</div>
+  <div class="trust-bar-item"><span>✅</span> Zero reclamações no Reclame Aqui</div>
+  <div class="trust-bar-item"><span>📐</span> Visualize seu projeto antes de decidir</div>
+</div>
+
+<!-- ─── DEPOIMENTOS ─── -->
+<section class="section-dep">
+  <div class="sec-eyebrow">O que dizem nossos clientes</div>
+  <h2 class="sec-title">Quem já reformou com a D'Styll<br><em>não contrata mais ninguém</em></h2>
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-quote">"</div>
+      <p class="dep-text">O projeto ficou exatamente como no 3D. Cada detalhe que pedi foi executado com perfeição. Quando os móveis planejados foram entregues, quase chorei de emoção.</p>
+      <div class="dep-author">
+        <div class="dep-avatar">C</div>
+        <div>
+          <div class="dep-name">Carla Drummond</div>
+          <div class="dep-detail">Cliente D'Styll · Água Verde</div>
+          <div class="dep-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-quote">"</div>
+      <p class="dep-text">Já tinha sido enganada duas vezes por marcenarias. Com a D'Styll foi diferente: entregaram antes do prazo e ainda fizeram um ajuste pós-entrega sem cobrar nada.</p>
+      <div class="dep-author">
+        <div class="dep-avatar">R</div>
+        <div>
+          <div class="dep-name">Renata Fontes</div>
+          <div class="dep-detail">Cliente D'Styll · Batel</div>
+          <div class="dep-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-quote">"</div>
+      <p class="dep-text">A melhor decisão da reforma foi escolher a D'Styll. Meus móveis planejados viraram o assunto de toda visita. Cada pessoa pergunta quem fez.</p>
+      <div class="dep-author">
+        <div class="dep-avatar">M</div>
+        <div>
+          <div class="dep-name">Márcia Lins</div>
+          <div class="dep-detail">Cliente D'Styll · Seminário</div>
+          <div class="dep-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIFERENCIAIS ─── -->
+<section class="section-diff">
+  <div class="sec-eyebrow">Por que a D'Styll</div>
+  <h2 class="sec-title">Tudo que você precisa saber<br>antes de <em>tomar sua decisão</em></h2>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-icon">30</div>
+      <div><div class="diff-title">30 anos em Curitiba</div><div class="diff-desc">Fundada em 1994. Uma reputação construída projeto a projeto, entrega a entrega.</div></div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">🏭</div>
+      <div><div class="diff-title">Fábrica própria no Umbará</div><div class="diff-desc">Controlamos cada etapa da produção. Sem terceirizados, sem surpresas na entrega.</div></div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">📐</div>
+      <div><div class="diff-title">O 3D é contrato</div><div class="diff-desc">O que você aprova na visualização é exatamente o que será instalado na sua casa.</div></div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">✦</div>
+      <div><div class="diff-title">Design exclusivo</div><div class="diff-desc">Nenhum projeto é igual ao outro. Cada ambiente é criado do zero pelo seu designer.</div></div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">📍</div>
+      <div><div class="diff-title">Showroom no Batel</div><div class="diff-desc">Venha tocar, abrir e fechar. Sinta a qualidade dos materiais antes de qualquer decisão.</div></div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">💬</div>
+      <div><div class="diff-title">Atendimento direto</div><div class="diff-desc">Você fala com o designer do seu projeto. Sem call center, sem atendente de triagem.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="section-faq">
+  <div class="sec-eyebrow">Dúvidas frequentes</div>
+  <h2 class="sec-title">Respondemos antes<br>que você <em>precise perguntar</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question">Como funciona a apresentação do projeto?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Após o primeiro contato, um designer apresenta o projeto 3D do seu ambiente. Só avançamos para produção quando cada detalhe estiver aprovado por você — nenhuma peça é fabricada sem a sua validação.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Quanto tempo leva para receber o projeto?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Após o primeiro contato e visita técnica, o projeto 3D é entregue em até 5 dias úteis. A produção e instalação variam conforme o escopo do ambiente.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">A D'Styll atende fora de Curitiba?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Atendemos Curitiba e região metropolitana. Para outras localidades, entre em contato para verificar disponibilidade da equipe de instalação.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Posso solicitar apenas um ambiente ou precisa ser a casa toda?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Atendemos desde um único ambiente até projetos completos com móveis planejados. Não há valor mínimo de projeto — o importante é a qualidade de cada entrega.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Como funciona o prazo de entrega?<div class="faq-icon">+</div></div>
+      <div class="faq-answer">Após aprovação do projeto e assinatura do contrato, o prazo de produção é acordado e cumprido. Em 30 anos, nenhuma reclamação de atraso no Reclame Aqui.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section class="section-cta">
+  <div class="sec-eyebrow">Próximo passo</div>
+  <h2 class="sec-title">Seu projeto começa com<br><em>uma conversa gratuita</em></h2>
+  <p class="cta-sub">Preencha o formulário e um designer D'Styll entra em contato para apresentar o seu projeto personalizado.</p>
+  <button class="btn-cta-scroll" onclick="document.querySelector('.side-right').scrollIntoView({behavior:'smooth'})">
+    Solicitar Seu Projeto Exclusivo →
+  </button>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<div class="page-footer">
+  <strong style="color:rgba(255,255,255,0.5);font-size:18px;font-family:'Playfair Display',serif;letter-spacing:2px;">D'Styll</strong><br>
+  Av. Silva Jardim, 2251 — Batel · Curitiba - PR · (41) 98495-1207<br>
+  © 2026 D'Styll Interiores · Todos os direitos reservados
+</div>
+
+<script>
+  // Formulário
+  document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(this));
+    const msg = `Olá! Preenchi o formulário e tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto exclusivo.`;
+    this.style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+    setTimeout(() => window.open('https://wa.me/5541984951207?text=' + encodeURIComponent(msg), '_blank'), 1500);
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.dep-card, .diff-item').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
