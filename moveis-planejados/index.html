@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D'Styll Interiores — Móveis Planejados de Alto Padrão em Curitiba</title>
+  <meta name="description" content="30 anos transformando ambientes em Curitiba com móveis planejados sob medida. Fábrica própria, 100+ avaliações 5 estrelas.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #1a1a1a;
+      --dark2: #111111;
+      --charcoal: #2D2D2D;
+      --gold: #C4A35A;
+      --gold-light: #E8C97A;
+      --red: #f04144;
+      --red-dark: #c72d30;
+      --cream: #F8F4EE;
+      --white: #ffffff;
+      --green-wp: #25D366;
+      --green-wp-dark: #1DA851;
+      --gray: #888888;
+      --light-gray: #f5f5f5;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--charcoal);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      padding: 14px 40px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 3px;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--dark); }
+    .nav-cta {
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-wp-dark); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* fundo animado com gradiente + foto */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.45;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(240,65,68,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(196,163,90,0.07) 0%, transparent 60%),
+        linear-gradient(160deg, rgba(13,13,13,0.72) 0%, rgba(23,23,23,0.65) 100%);
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      0%   { background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(240,65,68,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(196,163,90,0.07) 0%, transparent 60%),
+        linear-gradient(160deg, rgba(13,13,13,0.72) 0%, rgba(23,23,23,0.65) 100%); }
+      100% { background:
+        radial-gradient(ellipse 80% 60% at 75% 25%, rgba(240,65,68,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 25% 75%, rgba(196,163,90,0.09) 0%, transparent 55%),
+        linear-gradient(160deg, rgba(13,13,13,0.74) 0%, rgba(26,21,16,0.68) 100%); }
+    }
+    /* linhas decorativas */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-lines span {
+      position: absolute;
+      display: block;
+      background: linear-gradient(90deg, transparent, rgba(240,65,68,0.15), transparent);
+      height: 1px;
+      width: 100%;
+      animation: lineMove 6s linear infinite;
+    }
+    .hero-lines span:nth-child(1) { top: 20%; animation-delay: 0s; }
+    .hero-lines span:nth-child(2) { top: 50%; animation-delay: 2s; opacity: 0.5; }
+    .hero-lines span:nth-child(3) { top: 80%; animation-delay: 4s; opacity: 0.3; }
+    @keyframes lineMove {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+      z-index: 1;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+      }
+      .hero-cta-group { justify-content: center; }
+      .hero-stats { justify-content: center; }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    /* formulário no hero */
+    .hero-form-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 36px 32px;
+      backdrop-filter: blur(12px);
+      animation: fadeDown 0.8s 0.3s ease both;
+    }
+    .hero-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .hero-form-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+    .hf-group { margin-bottom: 12px; }
+    .hf-group label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .hf-group input,
+    .hf-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+      -webkit-appearance: none;
+    }
+    .hf-group select option { background: #1a1a1a; color: var(--white); }
+    .hf-group input::placeholder { color: rgba(255,255,255,0.22); }
+    .hf-group input:focus,
+    .hf-group select:focus {
+      border-color: var(--red);
+      background: rgba(240,65,68,0.06);
+    }
+    .hf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn-hf-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-hf-submit::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+    .btn-hf-submit:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240,65,68,0.4);
+    }
+    .hf-divider {
+      display: flex; align-items: center; gap: 10px;
+      margin: 14px 0;
+    }
+    .hf-divider::before, .hf-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .hf-divider span { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+    .btn-hf-wp {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--green-wp);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-hf-wp::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3.5s infinite;
+    }
+    .btn-hf-wp:hover { background: var(--green-wp-dark); transform: translateY(-2px); }
+    .hf-privacy {
+      font-size: 10px; color: rgba(255,255,255,0.22);
+      text-align: center; margin-top: 12px; line-height: 1.6;
+    }
+    .hf-thanks {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .hf-thanks-icon { font-size: 48px; margin-bottom: 16px; }
+    .hf-thanks h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; color: var(--white); margin-bottom: 10px;
+    }
+    .hf-thanks p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(240,65,68,0.1);
+      border: 1px solid rgba(240,65,68,0.35);
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 9px 22px;
+      border-radius: 50px;
+      margin-bottom: 36px;
+      animation: fadeDown 0.8s ease forwards;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: blinkDot 1.5s ease-in-out infinite;
+    }
+    @keyframes blinkDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+      animation: fadeDown 0.8s 0.15s ease both;
+    }
+    /* texto rotativo na headline */
+    .hero-rotating-wrap {
+      overflow: hidden;
+      height: clamp(42px, 6vw, 72px);
+      display: block;
+      margin-bottom: 28px;
+    }
+    .hero-rotating {
+      display: flex;
+      flex-direction: column;
+      animation: rotateText 9s ease-in-out infinite;
+    }
+    .hero-rotating span {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--red);
+      line-height: clamp(42px, 6vw, 72px);
+      flex-shrink: 0;
+    }
+    @keyframes rotateText {
+      0%,  28% { transform: translateY(0); }
+      33%, 61% { transform: translateY(-33.33%); }
+      66%, 94% { transform: translateY(-66.66%); }
+      100%     { transform: translateY(0); }
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 620px;
+      margin: 0 auto 44px;
+      animation: fadeDown 0.8s 0.3s ease both;
+    }
+    .hero-sub strong { color: rgba(255,255,255,0.95); font-weight: 600; }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 0.8s 0.45s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 18px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: skewX(-20deg);
+      animation: shine 3.5s infinite;
+    }
+    .btn-primary:hover {
+      background: var(--green-wp-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.45);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      padding: 18px 32px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.55);
+    }
+    /* stats hero */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 64px;
+      flex-wrap: wrap;
+      animation: fadeDown 0.8s 0.6s ease both;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-stat {
+      text-align: center;
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .hero-stat-num sup { font-size: 20px; color: var(--red); }
+    .hero-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    @media (max-width: 600px) {
+      .hero-stat { padding: 16px 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    }
+
+    /* ─── BARRA VERMELHA ─── */
+    .red-bar {
+      background: var(--red);
+      padding: 18px 24px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .red-bar strong { font-weight: 800; }
+
+    /* ─── DOR ─── */
+    .section-dor {
+      background: var(--white);
+      padding: 100px 24px;
+      position: relative;
+    }
+    .section-dor::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+    .container { max-width: 880px; margin: 0 auto; }
+    .container-wide { max-width: 1120px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 2px;
+      background: var(--red);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; color: var(--red); }
+    .section-title-gold em { color: var(--gold); }
+    .section-body {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .section-body strong { color: var(--dark); font-weight: 700; }
+    .callout-box {
+      background: #fff5f5;
+      border-left: 4px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 40px 0;
+    }
+    .callout-box p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--charcoal);
+      font-style: italic;
+    }
+    .callout-box strong { color: var(--dark); font-style: normal; }
+
+    /* ─── TRANSFORMAÇÃO ─── */
+    .section-transform {
+      background: var(--dark);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-transform::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -150px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(240,65,68,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .section-transform::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(196,163,90,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .section-transform .section-eyebrow { color: var(--red); }
+    .section-transform .section-eyebrow::before { background: var(--red); }
+    .section-transform .section-title { color: var(--white); }
+    .section-transform .section-title em { color: var(--gold-light); }
+    .section-transform .section-body { color: rgba(255,255,255,0.6); }
+
+    .transform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .transform-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: all 0.35s;
+      opacity: 0;
+      transform: translateY(24px);
+      position: relative;
+      overflow: hidden;
+    }
+    .transform-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .transform-card:hover::before { transform: scaleX(1); }
+    .transform-card.visible { animation: fadeUp 0.6s ease forwards; }
+    .transform-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(240,65,68,0.25);
+      transform: translateY(-6px);
+    }
+    .card-icon {
+      width: 50px; height: 50px;
+      background: rgba(240,65,68,0.12);
+      border: 1px solid rgba(240,65,68,0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .transform-card:hover .card-icon {
+      background: rgba(240,65,68,0.2);
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .card-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── PROVA SOCIAL ─── */
+    .section-proof {
+      background: var(--light-gray);
+      padding: 100px 24px;
+    }
+    .proof-header { text-align: center; margin-bottom: 60px; }
+    .stars-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid #F4D878;
+      border-radius: 50px;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #8B6914;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.35s;
+      border-top: 3px solid var(--red);
+    }
+    .testimonial-card.visible { animation: fadeUp 0.6s ease forwards; }
+    .testimonial-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.12); transform: translateY(-4px); }
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), #ff6b6e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; font-size: 14px; color: var(--dark); }
+    .author-detail { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .stars { color: #F4C430; font-size: 13px; margin-top: 3px; }
+
+    /* ─── DIFERENCIAIS ─── */
+    .section-diff {
+      background: var(--white);
+      padding: 100px 24px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .diff-item {
+      background: var(--light-gray);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: all 0.35s;
+      opacity: 0;
+      transform: translateY(16px);
+      border-bottom: 3px solid transparent;
+    }
+    .diff-item.visible { animation: fadeUp 0.5s ease forwards; }
+    .diff-item:hover {
+      background: #fff0f0;
+      border-bottom-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(240,65,68,0.1);
+    }
+    .diff-check {
+      width: 38px; height: 38px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      color: white;
+      font-weight: 700;
+    }
+    .diff-text-title { font-weight: 700; font-size: 15px; color: var(--dark); margin-bottom: 6px; }
+    .diff-text-desc { font-size: 13px; line-height: 1.7; color: var(--gray); }
+
+    /* ─── OFERTA/CTA ─── */
+    .section-oferta {
+      background: linear-gradient(160deg, #0d0d0d, #1a1a1a 60%, #1a0d0d);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-oferta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(240,65,68,0.07) 0%, transparent 65%);
+    }
+    .section-oferta .section-eyebrow { color: var(--red); justify-content: center; }
+    .section-oferta .section-eyebrow::before { background: var(--red); }
+    .section-oferta .section-title { color: var(--white); }
+    .steps-list {
+      list-style: none;
+      max-width: 560px;
+      margin: 48px auto;
+      text-align: left;
+    }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    .steps-list li.visible { animation: fadeRight 0.5s ease forwards; }
+    .step-num {
+      width: 38px; height: 38px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.75); }
+    .step-text strong { color: var(--white); }
+
+    .urgencia-box {
+      background: rgba(240,65,68,0.08);
+      border: 1px solid rgba(240,65,68,0.3);
+      border-radius: 16px;
+      padding: 28px 36px;
+      max-width: 560px;
+      margin: 0 auto 48px;
+    }
+    .urgencia-box p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.7; }
+    .urgencia-box strong { color: var(--red); }
+
+    .cta-final-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-cta-final {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--green-wp);
+      color: var(--white);
+      padding: 22px 48px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 12px 40px rgba(37,211,102,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-cta-final::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+    .btn-cta-final:hover {
+      background: var(--green-wp-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(37,211,102,0.5);
+    }
+    .cta-disclaimer { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+    /* ─── FORMULÁRIO ─── */
+    .form-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 480px;
+      margin: 28px auto;
+    }
+    .form-divider::before, .form-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+    .form-divider span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .lead-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 36px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .form-subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: var(--white);
+      transition: border-color 0.3s, background 0.3s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group select option { background: #1a1a1a; color: var(--white); }
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--red);
+      background: rgba(240,65,68,0.06);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .btn-form-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-form-submit::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+    .btn-form-submit:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(240,65,68,0.4);
+    }
+    .form-privacy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .showroom-info {
+      margin-top: 56px;
+      padding-top: 56px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+    .showroom-item-label {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 8px; font-weight: 700;
+    }
+    .showroom-item-value { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060606;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700;
+      color: var(--white); letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .footer-divider {
+      width: 40px; height: 2px;
+      background: var(--red);
+      margin: 16px auto;
+    }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.5px; }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 999;
+      width: 62px; height: 62px;
+      background: var(--green-wp);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      text-decoration: none;
+      animation: pulseWP 2.5s infinite;
+      transition: transform 0.3s;
+    }
+    .wp-float:hover { transform: scale(1.1); }
+    .wp-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes shine {
+      0%   { left: -60%; }
+      100% { left: 140%; }
+    }
+    @keyframes pulseWP {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+      50%       { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 14px rgba(37,211,102,0.1); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      nav.scrolled { padding: 12px 20px; }
+      .btn-primary, .btn-ghost { padding: 14px 22px; font-size: 14px; }
+      .btn-cta-final { padding: 18px 30px; font-size: 15px; }
+      .callout-box { padding: 20px 20px; }
+      .showroom-info { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">D'Styll</div>
+    <a href="https://wa.me/5541984951207?text=Olá! Vi a LP e quero falar com um designer sobre meus móveis planejados." class="nav-cta" target="_blank">
+      Falar com Designer
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-lines">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="hero-inner">
+      <!-- Coluna esquerda: copy -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          D'Styll · Curitiba · Desde 1994
+        </div>
+        <h1>Os móveis que você imaginou<br>merecem ser entregues como<br><em style="font-style:italic;color:var(--red);">você merece.</em></h1>
+        <p class="hero-sub">
+          Há 30 anos, a D'Styll entrega móveis planejados em Curitiba que ficam <strong>exatamente como no projeto</strong>. Sem surpresas. Sem atrasos. Sem decepcionar.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="30">0</span><sup>+</sup></div>
+            <div class="hero-stat-label">Anos de Tradição</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="100">0</span><sup>+</sup></div>
+            <div class="hero-stat-label">Avaliações 5 ★</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="0">0</span></div>
+            <div class="hero-stat-label">Reclamações Reclame Aqui</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna direita: formulário -->
+      <div class="hero-form-card">
+        <div class="hero-form-title">Solicite seu Projeto</div>
+        <div class="hero-form-sub">Preencha e um designer entra em contato</div>
+        <form id="heroForm">
+          <div class="hf-row">
+            <div class="hf-group">
+              <label>Nome</label>
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="hf-group">
+              <label>WhatsApp</label>
+              <input type="tel" name="whatsapp" placeholder="(41) 9xxxx-xxxx" required>
+            </div>
+          </div>
+          <div class="hf-group">
+            <label>Qual ambiente?</label>
+            <select name="ambiente" required>
+              <option value="" disabled selected>Selecione...</option>
+              <option>Móveis planejados</option>
+              <option>Closet / Guarda-roupa</option>
+              <option>Sala planejada</option>
+              <option>Home office</option>
+              <option>Área gourmet</option>
+              <option>Mais de um ambiente</option>
+            </select>
+          </div>
+          <div class="hf-row">
+            <div class="hf-group">
+              <label>Bairro</label>
+              <input type="text" name="bairro" placeholder="Ex: Batel..." required>
+            </div>
+            <div class="hf-group">
+              <label>Quando precisa?</label>
+              <select name="prazo" required>
+                <option value="" disabled selected>Prazo...</option>
+                <option>Em até 3 meses</option>
+                <option>Entre 3 e 6 meses</option>
+                <option>Mais de 6 meses</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-hf-submit">Solicitar Projeto 3D →</button>
+          <div class="hf-divider"><span>ou fale agora</span></div>
+          <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre meus móveis planejados." class="btn-hf-wp" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar com Designer Agora
+          </a>
+          <p class="hf-privacy">🔒 Sem spam. Seus dados são usados apenas para contato.</p>
+        </form>
+        <div class="hf-thanks" id="hfThanks">
+          <div class="hf-thanks-icon">✅</div>
+          <h4>Solicitação enviada!</h4>
+          <p>Um designer D'Styll entrará em contato pelo WhatsApp em breve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRA VERMELHA -->
+  <div class="red-bar">
+    🏭 Fábrica própria · Showroom no Batel · <strong>Visualize seu projeto antes de decidir</strong>
+  </div>
+
+  <!-- DOR -->
+  <section class="section-dor">
+    <div class="container">
+      <p class="section-eyebrow">A realidade que ninguém conta</p>
+      <h2 class="section-title">
+        Você já ouviu essas <em>histórias</em>, não é?
+      </h2>
+      <p class="section-body">
+        Uma amiga contratou uma marcenaria. O projeto no 3D era lindo. Quando os móveis chegaram... as portas não fechavam direito. A bancada veio com a cor errada. O prazo atrasou três meses. E pior: <strong>ninguém atendia o telefone depois da entrega.</strong>
+      </p>
+      <p class="section-body">
+        Outra gastou tudo que tinha na reforma, e hoje sente aquela pontada toda vez que abre o armário e vê o acabamento descascando.
+      </p>
+      <div class="callout-box">
+        <p>Isso não é azar. <strong>É o padrão de quem contrata errado.</strong><br><br>
+        Os seus móveis planejados vão fazer parte do seu lar por 20, 30 anos. Eles merecem ser feitos por quem vai estar aqui amanhã, depois de amanhã, daqui a dez anos — por uma empresa que construiu sua reputação tijolo por tijolo durante três décadas em Curitiba.</p>
+      </div>
+      <p class="section-body">
+        A D'Styll não é uma franquia. Não é um site que terceiriza a produção. É uma empresa curitibana, com fábrica própria, designer dedicado ao seu projeto, e o nome em cada móvel que sai pela porta.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMAÇÃO -->
+  <section class="section-transform">
+    <div class="container" style="position:relative;z-index:2;">
+      <p class="section-eyebrow">A sua nova realidade</p>
+      <h2 class="section-title section-title-gold">
+        Imagine acordar amanhã<br>e sentir <em>esse orgulho.</em>
+      </h2>
+      <p class="section-body">
+        Cada detalhe no lugar. As ferragens que deslizam com suavidade. A iluminação que valoriza cada superfície. O espaço que parece maior, mais organizado, mais <em style="color:var(--gold-light)">seu</em>. O projeto 3D que virou realidade — centímetro por centímetro.
+      </p>
+    </div>
+    <div class="container-wide" style="position:relative;z-index:2;">
+      <div class="transform-grid">
+        <div class="transform-card">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Fábrica Própria no Umbará</div>
+          <div class="card-text">Controlamos cada etapa da produção. Nenhum terceiro. Nenhuma desculpa. Quando dizemos prazo, cumprimos.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">Design de Autor</div>
+          <div class="card-text">Seu projeto é único. Não é catálogo, não é cópia. Cada ambiente é desenhado por um designer dedicado só à sua casa.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">📐</div>
+          <div class="card-title">O 3D É Contrato</div>
+          <div class="card-text">O que você aprova no projeto 3D é exatamente o que será entregue. Sem surpresas, sem "ficou parecido".</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">🏆</div>
+          <div class="card-title">Ferragens de Alto Padrão</div>
+          <div class="card-text">Dobradiças, puxadores e sistemas de deslizamento premium. Seus móveis planejados abrem e fecham com perfeição por décadas.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">📍</div>
+          <div class="card-title">Showroom no Batel</div>
+          <div class="card-text">Venha tocar, abrir, fechar. Veja e sinta a qualidade dos materiais antes de assinar qualquer coisa.</div>
+        </div>
+        <div class="transform-card">
+          <div class="card-icon">💬</div>
+          <div class="card-title">Atendimento Direto</div>
+          <div class="card-text">Você fala com o designer responsável pelo seu projeto. Não com call center. Não com atendente de triagem.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="section-proof">
+    <div class="container-wide">
+      <div class="proof-header">
+        <p class="section-eyebrow" style="justify-content:center;">Reconhecida por quem exige o melhor</p>
+        <h2 class="section-title">O que os nossos clientes <em>dizem depois</em> da entrega</h2>
+        <div class="stars-badge">
+          ⭐ A melhor empresa de móveis planejados de Curitiba no Google · 100+ avaliações 5 estrelas
+        </div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">O projeto ficou exatamente como no 3D. Cada detalhe que pedi foi executado com perfeição. Quando os móveis planejados foram entregues, quase chorei de emoção. Valeu cada centavo investido.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">C</div>
+            <div>
+              <div class="author-name">Carla Drummond</div>
+              <div class="author-detail">Cliente D'Styll · Água Verde</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Já tinha sido enganada duas vezes por marcenarias que não cumpriram o prazo. Com a D'Styll foi completamente diferente: entregaram antes do prazo e ainda fizeram um ajuste pós-entrega sem cobrar nada.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <div class="author-name">Renata Fontes</div>
+              <div class="author-detail">Cliente D'Styll · Batel</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">A melhor decisão da reforma foi escolher a D'Styll. Meus móveis planejados viraram o assunto de toda visita que recebo. Cada pessoa que entra pergunta quem fez. Fico orgulhosa de indicar.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Márcia Lins</div>
+              <div class="author-detail">Cliente D'Styll · Seminário</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="section-diff">
+    <div class="container-wide">
+      <p class="section-eyebrow">Por que a D'Styll</p>
+      <h2 class="section-title">Por que quem reformou uma vez<br><em>não contrata mais ninguém</em></h2>
+      <div class="diff-grid">
+        <div class="diff-item">
+          <div class="diff-check">✦</div>
+          <div>
+            <div class="diff-text-title">30 anos de tradição em Curitiba</div>
+            <div class="diff-text-desc">Fundada em 1994, com história construída sobre reputação e excelência em cada entrega.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">★</div>
+          <div>
+            <div class="diff-text-title">100+ avaliações 5 estrelas no Google</div>
+            <div class="diff-text-desc">Leia cada uma. São clientes reais, projetos reais, entregas reais.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">0</div>
+          <div>
+            <div class="diff-text-title">Zero reclamações no Reclame Aqui</div>
+            <div class="diff-text-desc">Em 30 anos de história. Isso não é sorte — é cultura de excelência.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">🏭</div>
+          <div>
+            <div class="diff-text-title">Fábrica própria no Umbará</div>
+            <div class="diff-text-desc">Controlamos a produção do início ao fim. Sem terceirizados, sem intermediários, sem surpresas.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">📍</div>
+          <div>
+            <div class="diff-text-title">Showroom no Batel</div>
+            <div class="diff-text-desc">Av. Silva Jardim, 2251. Venha sentir a qualidade com as próprias mãos antes de decidir.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <div class="diff-check">3D</div>
+          <div>
+            <div class="diff-text-title">Visualize seu projeto antes de decidir</div>
+            <div class="diff-text-desc">Você vê o projeto antes de assinar qualquer coisa. Só avançamos quando você estiver 100% satisfeita.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA/CTA -->
+  <section class="section-oferta" id="oferta">
+    <div class="container" style="position:relative;z-index:2;">
+      <p class="section-eyebrow">Como funciona</p>
+      <h2 class="section-title">Um processo pensado<br>para cada detalhe.</h2>
+      <ul class="steps-list">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Você nos manda uma mensagem</strong> — sem script, sem robô. Um designer responde.</div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Você conta o espaço e o que imagina</strong> — o tamanho, o estilo, as suas referências.</div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Agendamos uma visita ao showroom</strong> no Batel — ou uma visita técnica ao seu imóvel.</div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Você recebe um projeto 3D detalhado</strong>. Só avançamos para produção quando cada detalhe estiver aprovado por você.</div>
+        </li>
+      </ul>
+      <div class="urgencia-box">
+        <p>Nossa agenda de projetos para <strong>maio e junho de 2026</strong> está quase fechada.<br>Se a sua reforma tem prazo, o momento de conversar é <strong>agora</strong>.</p>
+      </div>
+      <div class="cta-final-group">
+        <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre meus móveis planejados." class="btn-cta-final" target="_blank">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar com Designer Agora
+        </a>
+        <p class="cta-disclaimer">Atendimento exclusivo · Resposta em minutos</p>
+      </div>
+
+      <div class="form-divider"><span>ou preencha o formulário</span></div>
+
+      <div class="lead-form">
+        <div class="form-title">Solicite seu projeto exclusivo</div>
+        <div class="form-subtitle">Preenchimento leva menos de 1 minuto</div>
+        <form id="leadForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input type="tel" name="whatsapp" placeholder="(41) 9xxxx-xxxx" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Qual ambiente você quer planejar?</label>
+            <select name="ambiente" required>
+              <option value="" disabled selected>Selecione...</option>
+              <option>Móveis planejados</option>
+              <option>Closet / Guarda-roupa</option>
+              <option>Sala planejada</option>
+              <option>Home office</option>
+              <option>Área gourmet</option>
+              <option>Mais de um ambiente</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Bairro</label>
+              <input type="text" name="bairro" placeholder="Ex: Batel, Água Verde..." required>
+            </div>
+            <div class="form-group">
+              <label>Quando precisa?</label>
+              <select name="prazo" required>
+                <option value="" disabled selected>Prazo...</option>
+                <option>Em até 3 meses</option>
+                <option>Entre 3 e 6 meses</option>
+                <option>Mais de 6 meses</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-form-submit">Solicitar Solicite seu Projeto →</button>
+          <p class="form-privacy">🔒 Seus dados são usados apenas para contato. Sem spam.</p>
+        </form>
+      </div>
+      <div class="showroom-info">
+        <div class="showroom-item">
+          <div class="showroom-item-label">Showroom</div>
+          <div class="showroom-item-value">Av. Silva Jardim, 2251<br>Batel · Curitiba - PR</div>
+        </div>
+        <div class="showroom-item">
+          <div class="showroom-item-label">Horário</div>
+          <div class="showroom-item-value">Seg a Sex: 08h30 às 18h30</div>
+        </div>
+        <div class="showroom-item">
+          <div class="showroom-item-label">WhatsApp</div>
+          <div class="showroom-item-value">(41) 98495-1207</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">D'Styll</div>
+    <div class="footer-divider"></div>
+    <p class="footer-tagline">Móveis sob medida para Curitiba e região desde 1994 · Tecnologia e tradição em cada milímetro</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.15);margin-top:16px;">© 2026 D'Styll Interiores · Todos os direitos reservados</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5541984951207?text=Olá! Quero falar com um designer sobre meus móveis planejados." class="wp-float" target="_blank" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 90);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.transform-card, .testimonial-card, .diff-item, .steps-list li').forEach(el => observer.observe(el));
+
+    // Contadores animados
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const duration = 2000;
+      const start = performance.now();
+      function update(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(eased * target);
+        if (p < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(update);
+    }
+    const cObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); cObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => cObserver.observe(el));
+
+    // Formulário hero → WhatsApp
+    document.getElementById('heroForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const d = Object.fromEntries(new FormData(this));
+      const msg = `Olá! Tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto exclusivo.`;
+      this.style.display = 'none';
+      document.getElementById('hfThanks').style.display = 'block';
+      setTimeout(() => window.open('https://wa.me/5541984951207?text=' + encodeURIComponent(msg), '_blank'), 1500);
+    });
+
+    // Formulário seção oferta → WhatsApp
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const d = Object.fromEntries(new FormData(this));
+      const msg = `Olá! Tenho interesse em um projeto D'Styll.\n\n👤 Nome: ${d.nome}\n📱 WhatsApp: ${d.whatsapp}\n🏠 Ambiente: ${d.ambiente}\n📍 Bairro: ${d.bairro}\n📅 Prazo: ${d.prazo}\n\nGostaria de saber mais sobre o projeto exclusivo.`;
+      window.open('https://wa.me/5541984951207?text=' + encodeURIComponent(msg), '_blank');
+    });
+  </script>
+</body>
+</html>
