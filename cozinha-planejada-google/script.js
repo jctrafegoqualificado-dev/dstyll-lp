@@ -116,7 +116,7 @@
       var msg = (document.getElementById('mensagem') || {}).value || '';
       var texto = 'Olá, sou ' + nome + '.';
       if (wppNum) texto += ' Meu WhatsApp é ' + wppNum + '.';
-      texto += ' Quero um orçamento de ' + ambiente + '.';
+      texto += ' Quero iniciar um projeto de ' + ambiente + '.';
       if (msg) texto += ' ' + msg;
       var url = 'https://wa.me/5541984951207?text=' + encodeURIComponent(texto);
       window.open(url, '_blank', 'noopener');
