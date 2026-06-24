@@ -53,9 +53,12 @@ ul { list-style: none; padding: 0; margin: 0; }
   backdrop-filter: saturate(160%) blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
-.brand-logo { width: auto; height: 48px; object-fit: contain; }
+.nav-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 72px; flex-wrap: nowrap; }
+.brand-logo { width: auto; height: 44px; object-fit: contain; flex-shrink: 0; }
 @media (min-width: 720px) { .brand-logo { height: 54px; } }
+.nav-cta-short { display: inline; }
+.nav-cta-full { display: none; }
+@media (min-width: 480px) { .nav-cta-short { display: none; } .nav-cta-full { display: inline; } }
 
 /* ---------- BUTTONS ---------- */
 .btn {
@@ -64,11 +67,12 @@ ul { list-style: none; padding: 0; margin: 0; }
   font-family: var(--f-ui); font-size: 15px; font-weight: 600;
   border-radius: var(--r); border: 1.5px solid transparent;
   cursor: pointer; transition: all .18s ease;
-  letter-spacing: .2px;
+  letter-spacing: .2px; white-space: nowrap;
 }
+.btn svg { flex-shrink: 0; width: 18px; height: 18px; display: block; }
+.btn-lg svg { width: 20px; height: 20px; }
 .btn-wpp { background: var(--wpp); color: #fff; box-shadow: 0 6px 18px rgba(37,211,102,.3); }
 .btn-wpp:hover { background: var(--wpp-2); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(37,211,102,.4); }
-.btn-wpp svg { flex-shrink: 0; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover { background: var(--bege); }
 .btn-lg { padding: 17px 30px; font-size: 16.5px; min-height: 54px; }
