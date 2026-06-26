@@ -204,6 +204,15 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .contact-info { display: grid; gap: 18px; grid-template-columns: 1fr; margin-bottom: 20px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 @media (min-width: 600px) { .contact-info { grid-template-columns: repeat(3, 1fr); } }
+
+.trust-row {
+  display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 22px 0 0; padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.trust-row li {
+  font-size: 13.5px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px;
+}
+.trust-row strong { color: var(--fendi-2); font-family: var(--f-ui); font-weight: 700; }
 .contact-info > div { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
 .contact-info strong { display: block; font-family: var(--f-ui); font-size: 11px; font-weight: 600; color: var(--fendi-2); text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 6px; }
 
