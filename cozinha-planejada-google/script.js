@@ -136,7 +136,7 @@
 
   // ---------- Reveal por scroll ----------
   if ('IntersectionObserver' in window && !reduce) {
-    var targets = ['.section-head', '.dif', '.detail-grid figure', '.contact-text', '.contact-form-card', '.hero-text', '.hero-visual'];
+    var targets = ['.section-head', '.dif', '.dif-gallery-row figure', '.contact-text', '.hero-text', '.hero-visual'];
     var nodes = document.querySelectorAll(targets.join(','));
     nodes.forEach(function (el) {
       el.classList.add('reveal');
