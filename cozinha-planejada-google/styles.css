@@ -95,7 +95,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .kicker {
   font-family: var(--f-ui); font-size: 12px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 2.2px; margin: 0 0 14px;
-  color: var(--fendi-2); display: inline-flex; align-items: center; gap: 10px;
+  color: #6B5E47; display: inline-flex; align-items: center; gap: 10px;
 }
 .kicker::before { content: ""; width: 26px; height: 2px; background: var(--fendi); display: inline-block; }
 .kicker--plain::before { display: none; }
